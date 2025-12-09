@@ -3,385 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bjorvand Solutions | Smart Indie by DevWithKevin</title>
+  <title>Bjorvand Solutions | Smart Indie</title>
   <meta name="description" content="Bjorvand Solutions presents Smart Indie, the step-by-step system for beginner solo game devs to finish and release their first game.">
-  <meta name="keywords" content="Smart Indie, Bjorvand Solutions, DevWithKevin, indie game dev course, tutorial hell">
-  <style>
-    :root {
-      --bg: #f7f7f8;
-      --card: #ffffff;
-      --text: #111217;
-      --muted: #4a4f58;
-      --accent: #2563eb;
-      --accent-light: #e8eefc;
-      --border: #e2e5ea;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-      --radius: 14px;
-      --transition: 0.2s ease;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(247, 247, 248, 0.95);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    nav { display: flex; gap: 16px; align-items: center; }
-
-    .nav-links { display: flex; gap: 14px; }
-
-    .nav-links a {
-      padding: 8px 12px;
-      border-radius: 10px;
-      color: var(--text);
-      font-weight: 600;
-      transition: background var(--transition), color var(--transition);
-    }
-
-    .nav-links a:hover { background: var(--accent-light); color: var(--accent); }
-
-    .burger {
-      display: none;
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--card);
-    }
-
-    .burger span {
-      width: 18px;
-      height: 2px;
-      background: var(--text);
-      display: block;
-      position: relative;
-    }
-
-    .burger span::before,
-    .burger span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 18px;
-      height: 2px;
-      background: var(--text);
-    }
-
-    .burger span::before { top: -6px; }
-    .burger span::after { top: 6px; }
-
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      padding: 12px 18px 18px;
-      background: rgba(247, 247, 248, 0.95);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .mobile-menu a {
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: var(--card);
-      color: var(--text);
-      font-weight: 600;
-      box-shadow: var(--shadow);
-    }
-
-    main { max-width: 1100px; margin: 0 auto; padding: 40px 18px 80px; }
-
-    section { padding: 60px 0; }
-
-    h1, h2, h3, h4 { margin: 0 0 12px; letter-spacing: -0.02em; }
-    h1 { font-size: clamp(2.2rem, 4vw, 3.3rem); line-height: 1.1; }
-    h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
-    h3 { font-size: 1.15rem; margin-bottom: 8px; }
-
-    p { margin: 0 0 14px; color: var(--muted); }
-
-    .grid-two {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero .card { text-align: left; }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
-    }
-
-    .button.primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
-    }
-
-    .button.primary:hover { transform: translateY(-1px); box-shadow: 0 16px 38px rgba(37, 99, 235, 0.35); }
-
-    .button.ghost {
-      background: var(--accent-light);
-      color: var(--accent);
-      border: 1px solid var(--accent);
-    }
-
-    .hero-sub { color: var(--muted); max-width: 640px; }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
-    .hero-right {
-      padding: 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-right h3 { margin-bottom: 6px; }
-
-    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag { background: var(--accent-light); color: var(--accent); padding: 6px 10px; border-radius: 10px; font-weight: 600; }
-
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .benefits .card { min-height: 140px; }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 14px;
-      margin: 18px 0;
-    }
-
-    .faq details {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-    }
-
-    .faq summary {
-      cursor: pointer;
-      font-weight: 700;
-      list-style: none;
-    }
-
-    .faq summary::-webkit-details-marker { display: none; }
-
-    .faq details + details { margin-top: 12px; }
-
-    .cta-strip {
-      background: #eef2fb;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: flex-start;
-      box-shadow: var(--shadow);
-    }
-
-    .game-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-    }
-
-    .game-card {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .game-placeholder {
-      background: linear-gradient(135deg, #dbe4ff, #e8ecf6);
-      height: 150px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .game-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .contact-form {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      font: inherit;
-      background: #fff;
-    }
-
-    textarea { min-height: 120px; resize: vertical; }
-
-    footer {
-      border-top: 1px solid var(--border);
-      background: var(--card);
-      padding: 20px 18px;
-      margin-top: 40px;
-    }
-
-    .footer-content {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      color: var(--muted);
-    }
-
-    .footer-links { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    @media (min-width: 720px) {
-      .grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .nav-links { display: flex; }
-      .burger { display: none; }
-      .mobile-menu { display: none !important; }
-      .cta-strip { flex-direction: row; align-items: center; justify-content: space-between; }
-      .about-grid { grid-template-columns: 1.2fr 1fr; }
-    }
-
-    @media (max-width: 719px) {
-      nav { display: none; }
-      .burger { display: inline-flex; }
-      main { padding: 30px 18px 70px; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <header>
     <div class="nav-container">
-      <div class="logo">Bjorvand Solutions</div>
+      <a class="logo" href="index.html">Bjorvand Solutions</a>
       <nav aria-label="Primary">
         <div class="nav-links">
-          <a href="#home">Smart Indie</a>
-          <a href="#games">Games</a>
-          <a href="#about-contact">About & Contact</a>
+          <a href="landing.html">Landing</a>
+          <a href="index.html">Smart Indie</a>
+          <a href="games.html">Games</a>
+          <a href="about-contact.html">About & Contact</a>
         </div>
+        <button id="themeToggle" class="theme-toggle" type="button">Dark mode</button>
       </nav>
       <button class="burger" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#home">Smart Indie</a>
-      <a href="#games">Games</a>
-      <a href="#about-contact">About & Contact</a>
+      <a href="landing.html">Landing</a>
+      <a href="index.html">Smart Indie</a>
+      <a href="games.html">Games</a>
+      <a href="about-contact.html">About & Contact</a>
+      <button id="mobileThemeToggle" class="theme-toggle" type="button">Dark mode</button>
     </div>
   </header>
 
   <main>
-    <section id="home" aria-labelledby="home-title">
+    <section aria-labelledby="home-title">
       <div class="hero section">
         <div class="pill">Smart Indie • For beginner solo devs</div>
         <div class="grid-two">
           <div>
             <h1 id="home-title">Finish your first indie game without quitting again</h1>
-            <p class="hero-sub">Smart Indie is my step by step system for busy solo devs who want to finally escape tutorial hell and release their first game.</p>
+            <p class="hero-sub">Smart Indie is the step by step system for busy solo devs who want to escape tutorial hell and finally release their first game.</p>
             <div style="display:flex; flex-wrap: wrap; gap: 12px; margin: 14px 0 8px;">
-              <a class="button primary" href="https://example.com/smart-indie">Join Smart Indie</a>
+              <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Join Smart Indie</a>
               <a class="button ghost" href="#what-is">Learn more</a>
             </div>
             <p style="margin-top: 2px;">No fluff—just the plan and support to finally ship.</p>
@@ -402,10 +61,10 @@
         <h2 id="vsl-title">Watch this first</h2>
         <p>This video explains how Smart Indie helps you go from tutorials to a finished game.</p>
         <div class="video-wrapper" aria-label="Smart Indie overview video">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen title="Smart Indie overview"></iframe>
+          <iframe width="1840" height="1035" src="https://www.youtube.com/embed/UP7gjg_8YnM" title="Smart Indie Program Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div style="margin-top: 16px;">
-          <a class="button primary" href="https://example.com/smart-indie">Apply to join Smart Indie</a>
+          <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Apply to join Smart Indie</a>
         </div>
       </section>
 
@@ -427,7 +86,7 @@
           </div>
         </div>
         <div style="margin-top: 18px;">
-          <a class="button primary" href="https://example.com/smart-indie">Join Smart Indie</a>
+          <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Join Smart Indie</a>
         </div>
       </section>
 
@@ -472,112 +131,24 @@
             <h3 id="cta-strip-title" style="margin: 0 0 6px;">If you are tired of restarting and never releasing, Smart Indie gives you the plan and momentum to finish.</h3>
             <p style="margin: 0;">Start building small, finishable games with support.</p>
           </div>
-          <a class="button primary" href="https://example.com/smart-indie">Join Smart Indie</a>
+          <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Join Smart Indie</a>
         </div>
       </section>
-    </section>
-
-    <section id="games" aria-labelledby="games-title">
-      <h2 id="games-title">My games</h2>
-      <p>Here are the small, focused games I have shipped or am currently building. More coming soon—each one follows the same Smart Indie principles.</p>
-      <div class="game-grid">
-        <div class="card game-card">
-          <div class="game-placeholder">Cover art placeholder</div>
-          <div>
-            <h3>Orbital Chaos</h3>
-            <p>A tight arcade roguelite about managing orbiting drones in collapsing space lanes.</p>
-          </div>
-          <div class="game-actions">
-            <a class="button ghost" href="#">View on Google Play</a>
-            <a class="button ghost" href="#">View on App Store</a>
-          </div>
-        </div>
-        <div class="card game-card">
-          <div class="game-placeholder">Cover art placeholder</div>
-          <div>
-            <h3>Signal Runner</h3>
-            <p>Prototype: speedrun puzzles where every move costs signal strength.</p>
-          </div>
-          <div class="game-actions">
-            <a class="button ghost" href="#">Wishlist</a>
-          </div>
-        </div>
-        <div class="card game-card">
-          <div class="game-placeholder">Cover art placeholder</div>
-          <div>
-            <h3>More coming soon</h3>
-            <p>New small-scope releases built with the Smart Indie approach.</p>
-          </div>
-          <div class="game-actions">
-            <a class="button ghost" href="#">Stay updated</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about-contact" aria-labelledby="about-title">
-      <div class="about-grid">
-        <div>
-          <h2 id="about-title">About Kevin</h2>
-          <p>I am Kevin, an indie dev and YouTuber. I teach beginners how to escape tutorial hell and finally finish their first game.</p>
-          <p>I build and ship small, scope-safe games and share the process on my channel. The Smart Indie system distills what actually works when you are short on time.</p>
-          <p>If you want momentum and a proven path, I am here to help you finish and release.</p>
-          <a class="button primary" href="https://youtube.com">Watch my YouTube channel</a>
-        </div>
-        <div>
-          <h2>Contact</h2>
-          <p>For questions about Smart Indie, collaborations or business inquiries, use the form below or email me directly.</p>
-          <p><strong>Email:</strong> contact@bjorvandsolutions.com</p>
-          <form class="contact-form" action="#" method="post">
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" placeholder="Your name" required>
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" placeholder="you@example.com" required>
-            </label>
-            <label>
-              <span>Message</span>
-              <textarea name="message" placeholder="How can I help?" required></textarea>
-            </label>
-            <button class="button primary" type="submit">Send message</button>
-          </form>
-        </div>
-      </div>
     </section>
   </main>
 
   <footer>
     <div class="footer-content">
-      <div>© Bjorvand Solutions 2024</div>
+      <div>© Bjorvand Solutions 2025 • Org nr 836135652</div>
       <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#games">Games</a>
-        <a href="#about-contact">About & Contact</a>
+        <a href="landing.html">Landing</a>
+        <a href="index.html">Smart Indie</a>
+        <a href="games.html">Games</a>
+        <a href="about-contact.html">About & Contact</a>
       </div>
       <div>contact@bjorvandsolutions.com</div>
     </div>
   </footer>
-
-  <script>
-    const burger = document.querySelector('.burger');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    function toggleMenu() {
-      const isOpen = mobileMenu.style.display === 'flex';
-      mobileMenu.style.display = isOpen ? 'none' : 'flex';
-      burger.setAttribute('aria-expanded', String(!isOpen));
-    }
-
-    burger.addEventListener('click', toggleMenu);
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.style.display = 'none';
-        burger.setAttribute('aria-expanded', 'false');
-      });
-    });
-  </script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
