@@ -334,9 +334,9 @@ p {
   background: linear-gradient(135deg, #1b1f29, #161b22);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 26px;
+  padding: 22px;
   box-shadow: var(--shadow);
-  max-width: 860px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
@@ -348,8 +348,8 @@ p {
 }
 
 .testimonial-avatar {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--accent);
@@ -380,8 +380,7 @@ p {
 
 .testimonial-quote {
   color: #e7ecf6;
-  font-size: 1.12rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
   margin: 0;
 }
 
