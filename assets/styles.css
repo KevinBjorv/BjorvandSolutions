@@ -63,6 +63,19 @@ nav {
   align-items: center;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-cta {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(253, 129, 20, 0.28);
+}
+
 .nav-links {
   display: none;
   gap: 14px;
@@ -508,5 +521,14 @@ footer {
 
   main {
     padding: 30px 18px 70px;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .nav-cta {
+    padding: 10px 12px;
+    font-size: 0.9rem;
   }
 }
