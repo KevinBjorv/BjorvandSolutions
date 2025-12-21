@@ -1,0 +1,389 @@
+{
+  "generated_at": "2025-12-21",
+  "purpose": "Starter list of beginner-friendly asset websites for a first game, prioritized for free + commercially-allowed usage. Always verify the specific asset license before shipping.",
+  "categories": [
+    "Sound effects",
+    "Music",
+    "3d models",
+    "Vector icons",
+    "2d art/sprites",
+    "Textures"
+  ],
+  "license_quick_rules": {
+    "best_for_beginners": "CC0 (public domain style) - simplest for commercial use, no attribution needed.",
+    "usually_ok_but_you_must_credit": "CC BY - commercial allowed, attribution required.",
+    "avoid_for_commercial_games": "NC (NonCommercial) - not allowed for commercial projects.",
+    "be_careful": "SA (ShareAlike) or GPL - can add obligations that beginners often misunderstand."
+  },
+  "sites": {
+    "kenney": {
+      "name": "Kenney",
+      "url": "https://kenney.nl/assets",
+      "short_description": "Curated game-ready packs (2D, 3D, UI, audio). Very beginner-friendly, consistent style, great for prototypes.",
+      "free_level": "mostly_free",
+      "commercial_use": "yes",
+      "license_notes": "Commonly CC0 (no attribution required). Some packs are paid bundles, but many high-quality free packs exist.",
+      "beginner_tip": "Use Kenney for speed: consistent style avoids art mismatch problems."
+    },
+    "opengameart": {
+      "name": "OpenGameArt",
+      "url": "https://opengameart.org/",
+      "short_description": "Large library of community-made 2D, audio, and some 3D. Good breadth, but licensing is mixed per asset.",
+      "free_level": "free_mixed",
+      "commercial_use": "yes_with_license_filter",
+      "license_notes": "Licenses vary (CC0, CC BY, CC BY-SA, GPL, etc). You must filter and avoid NC for commercial releases.",
+      "beginner_tip": "Only download if the license matches your game. Prefer CC0 first, then CC BY if you can credit."
+    },
+    "pixabay": {
+      "name": "Pixabay",
+      "url": "https://pixabay.com/",
+      "short_description": "Huge library of free audio (music + sound effects). Easy downloads, beginner-friendly licensing summary.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "Generally usable commercially without attribution, but watch out for restrictions around trademarks/logos and standalone redistribution.",
+      "beginner_tip": "Good default for quick music and SFX, but avoid anything that contains recognizable brands."
+    },
+    "freesound": {
+      "name": "Freesound",
+      "url": "https://freesound.org/",
+      "short_description": "Massive sound effect database. Best when you filter strictly for CC0 for commercial projects.",
+      "free_level": "free_mixed",
+      "commercial_use": "yes_with_license_filter",
+      "license_notes": "Mixed licenses per sound (CC0, Attribution, NonCommercial). Commercial use depends on each sound’s license.",
+      "beginner_tip": "Search and filter for CC0 only if you want the simplest legal path."
+    },
+    "sonniss_gdc": {
+      "name": "Sonniss GameAudioGDC (Free yearly bundles)",
+      "url": "https://sonniss.com/gameaudiogdc/",
+      "short_description": "High-quality, huge SFX bundles released yearly. Great quality, less searchable than Freesound/Pixabay.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "Royalty-free and commercially usable; generally no attribution required. Not intended for reselling sounds standalone.",
+      "beginner_tip": "Use when you want lots of pro SFX quickly and do not need tight searching."
+    },
+    "zapsplat": {
+      "name": "ZapSplat",
+      "url": "https://www.zapsplat.com/",
+      "short_description": "Large library of SFX and some music. Free tier typically requires attribution; paid removes attribution for many assets.",
+      "free_level": "freemium",
+      "commercial_use": "yes",
+      "license_notes": "Attribution is commonly required on free accounts; some assets are CC0. Check the license type on each download.",
+      "beginner_tip": "If you cannot or will not do attribution credits, treat ZapSplat as lower priority unless CC0 or paid."
+    },
+    "youtube_audio_library": {
+      "name": "YouTube Audio Library",
+      "url": "https://support.google.com/youtube/answer/3376882",
+      "short_description": "Free music and SFX provided for creators. Useful and safe, but you must follow YouTube’s specific usage notes.",
+      "free_level": "free",
+      "commercial_use": "yes_with_conditions",
+      "license_notes": "Some tracks require attribution; terms vary by track. Check the specific track’s requirements before using in a shipped game.",
+      "beginner_tip": "Good backup option. Screenshot or save the track’s license/attribution requirement for your records."
+    },
+    "incompetech": {
+      "name": "Incompetech (Kevin MacLeod)",
+      "url": "https://incompetech.com/music/royalty-free/",
+      "short_description": "Classic free game music source. Lots of usable tracks, especially for prototypes and simple releases.",
+      "free_level": "freemium",
+      "commercial_use": "yes",
+      "license_notes": "Typically free with attribution; paid license removes attribution requirements.",
+      "beginner_tip": "If you use it in a commercial game, keep a clean credits file and follow the exact attribution format."
+    },
+    "free_music_archive": {
+      "name": "Free Music Archive",
+      "url": "https://freemusicarchive.org/",
+      "short_description": "Music library where licenses vary by track. Good variety, but requires careful filtering for commercial use.",
+      "free_level": "free_mixed",
+      "commercial_use": "yes_with_license_filter",
+      "license_notes": "Many tracks use Creative Commons licenses. You must filter out NC for commercial projects and follow attribution rules when required.",
+      "beginner_tip": "Only use tracks that clearly allow commercial use."
+    },
+    "ccmixter": {
+      "name": "ccMixter",
+      "url": "https://ccmixter.org/",
+      "short_description": "Creative Commons music community. Quality varies, licensing varies, but can be great for free music with clear license labels.",
+      "free_level": "free_mixed",
+      "commercial_use": "yes_with_license_filter",
+      "license_notes": "Track licenses vary. Some require attribution, some restrict commercial use.",
+      "beginner_tip": "Filter for licenses that explicitly allow commercial use, then store attribution details."
+    },
+    "poly_haven": {
+      "name": "Poly Haven",
+      "url": "https://polyhaven.com/",
+      "short_description": "Top-tier CC0 textures, HDRIs, and some models. Very safe licensing and great quality for 3D games.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "CC0 content intended for unrestricted use (including commercial), no attribution required.",
+      "beginner_tip": "If you are doing 3D, start here for textures first."
+    },
+    "ambientcg": {
+      "name": "ambientCG",
+      "url": "https://ambientcg.com/",
+      "short_description": "Huge CC0 library of PBR textures plus some models. Extremely useful for 3D environments.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "CC0, no attribution required, including commercial use.",
+      "beginner_tip": "Great second stop after Poly Haven if you cannot find the exact material you need."
+    },
+    "texturecan": {
+      "name": "TextureCan",
+      "url": "https://www.texturecan.com/",
+      "short_description": "Free PBR textures and some CC0 models. Solid selection, clear CC0 positioning.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "Stated as CC0 for offered textures and graphics.",
+      "beginner_tip": "Good for filling gaps when Poly Haven and ambientCG do not have what you want."
+    },
+    "sharetextures": {
+      "name": "ShareTextures",
+      "url": "https://www.sharetextures.com/",
+      "short_description": "Free textures and models with CC0 positioning plus platform ToS constraints. Useful, but read their terms.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "Claims CC0 licensing, but also has platform terms around redistribution/collection-style reuploads.",
+      "beginner_tip": "Using inside your game is fine, but do not reupload their packs elsewhere."
+    },
+    "3dtextures_me": {
+      "name": "3DTextures.me",
+      "url": "https://3dtextures.me/",
+      "short_description": "Free texture site with CC0 explanations. Good for additional PBR materials.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "CC0 is emphasized; still verify per download page when possible.",
+      "beginner_tip": "Great for quick materials, especially if you need lots of variants."
+    },
+    "cgbookcase": {
+      "name": "CGBookcase",
+      "url": "https://www.cgbookcase.com/",
+      "short_description": "Free PBR textures with an emphasis on no restrictions. Smaller than ambientCG, but useful.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "Site presents textures as free with no restrictions; still keep a record of the asset source.",
+      "beginner_tip": "Use as a backup library."
+    },
+    "textures_com": {
+      "name": "Textures.com",
+      "url": "https://www.textures.com/",
+      "short_description": "Huge professional texture library with a free plan, but not CC0 and comes with more usage constraints.",
+      "free_level": "freemium",
+      "commercial_use": "yes_with_conditions",
+      "license_notes": "Allowed for commercial games, including with free account downloads, but the license is not public domain and has rules.",
+      "beginner_tip": "Use if you need something very specific, but prefer CC0 libraries first."
+    },
+    "quaternius": {
+      "name": "Quaternius",
+      "url": "https://quaternius.com/",
+      "short_description": "Stylized low-poly 3D packs that are popular for prototypes and simple releases.",
+      "free_level": "mostly_free",
+      "commercial_use": "yes",
+      "license_notes": "Commonly positioned as free for commercial use; verify the pack’s license text per download.",
+      "beginner_tip": "Perfect for fast 3D prototyping without art bottlenecks."
+    },
+    "kaylousberg": {
+      "name": "Kay Lousberg (KayKit)",
+      "url": "https://kaylousberg.com/game-assets/",
+      "short_description": "Extremely useful low-poly packs for prototyping, often CC0 and designed for game engines.",
+      "free_level": "mostly_free",
+      "commercial_use": "yes",
+      "license_notes": "Many packs are explicitly CC0 (no attribution required), but confirm per pack page.",
+      "beginner_tip": "If you want a clean low-poly style, this is one of the fastest paths."
+    },
+    "polypizza": {
+      "name": "Poly Pizza",
+      "url": "https://poly.pizza/",
+      "short_description": "3D model library that aggregates assets. Licensing is per model, so you must check each asset.",
+      "free_level": "free_mixed",
+      "commercial_use": "yes_with_license_filter",
+      "license_notes": "Assets use Creative Commons licenses per asset. Not automatically CC0, so verify before using commercially.",
+      "beginner_tip": "Treat it like a search engine for models, not a single-license library."
+    },
+    "sketchfab": {
+      "name": "Sketchfab",
+      "url": "https://sketchfab.com/",
+      "short_description": "Huge model platform with downloadable models, some under Creative Commons. Great variety, but license varies.",
+      "free_level": "free_mixed",
+      "commercial_use": "yes_with_license_filter",
+      "license_notes": "Many models are under different Creative Commons licenses. You must confirm license per model download.",
+      "beginner_tip": "Only download models that explicitly allow commercial use (prefer CC0 or CC BY)."
+    },
+    "mixamo": {
+      "name": "Adobe Mixamo",
+      "url": "https://www.mixamo.com/",
+      "short_description": "Free characters and animations for prototyping and even shipped games, but not a CC0 asset site.",
+      "free_level": "free",
+      "commercial_use": "yes_with_conditions",
+      "license_notes": "Usable in projects, but you cannot redistribute the raw assets as a library. License is not CC0.",
+      "beginner_tip": "Use for characters fast, but do not rely on it as your only long-term art style."
+    },
+    "game_icons_net": {
+      "name": "Game-Icons.net",
+      "url": "https://game-icons.net/",
+      "short_description": "Large set of game-relevant SVG icons. Great for UI and ability icons.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "Typically CC BY, so attribution is required.",
+      "beginner_tip": "If you hate credits, pick CC0 icon sources instead."
+    },
+    "material_icons": {
+      "name": "Google Material Symbols / Icons",
+      "url": "https://fonts.google.com/icons",
+      "short_description": "Clean, consistent icons. Great for UI, menus, and non-fantasy visual language.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "Apache 2.0 licensing for Material Icons is widely used and commercial-friendly.",
+      "beginner_tip": "Use when you want simple UI clarity over game-y style."
+    },
+    "font_awesome": {
+      "name": "Font Awesome Free",
+      "url": "https://fontawesome.com/",
+      "short_description": "Well-known icon set. Useful for UI icons, especially tool-style interfaces and menus.",
+      "free_level": "freemium",
+      "commercial_use": "yes",
+      "license_notes": "Free tier exists; licensing differs by component (icons vs code). Check the specific license page for your use.",
+      "beginner_tip": "Good for clean UI, not great for fantasy RPG ability icons."
+    },
+    "heroicons": {
+      "name": "Heroicons",
+      "url": "https://heroicons.com/",
+      "short_description": "Modern, clean SVG icons. More web-app style than game style, but good for UI clarity.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "MIT licensed.",
+      "beginner_tip": "Great for tooling UI and minimalist games."
+    },
+    "svgrepo": {
+      "name": "SVG Repo",
+      "url": "https://www.svgrepo.com/",
+      "short_description": "Huge icon aggregator. Many items are public domain/CC0, but licensing varies by icon source.",
+      "free_level": "free_mixed",
+      "commercial_use": "yes_with_license_filter",
+      "license_notes": "You must check the license badge per icon (public domain/CC0 vs other licenses).",
+      "beginner_tip": "Only download icons clearly marked public domain/CC0 if you want zero attribution."
+    },
+    "openclipart": {
+      "name": "OpenClipart",
+      "url": "https://openclipart.org/",
+      "short_description": "Public-domain style clipart. Can help for UI, icons, and placeholder art, but style consistency varies a lot.",
+      "free_level": "free",
+      "commercial_use": "yes",
+      "license_notes": "CC0-based upload policy. Still inspect each asset for obvious trademark issues.",
+      "beginner_tip": "Best as placeholder art or for simple UI elements."
+    },
+    "flaticon": {
+      "name": "Flaticon",
+      "url": "https://www.flaticon.com/",
+      "short_description": "Huge icon library, but many assets are paywalled and free use often requires attribution and has limits.",
+      "free_level": "freemium",
+      "commercial_use": "yes_with_conditions",
+      "license_notes": "Attribution commonly required on free tier; many premium-only assets.",
+      "beginner_tip": "Use only if you accept attribution or pay. Otherwise pick CC0/MIT/Apache sources."
+    },
+    "itchio_cc0": {
+      "name": "itch.io (CC0 asset listings)",
+      "url": "https://itch.io/game-assets/assets-cc0",
+      "short_description": "A discovery hub for CC0 game assets from many creators (2D, 3D, UI, textures, audio).",
+      "free_level": "free_mixed",
+      "commercial_use": "yes_with_license_filter",
+      "license_notes": "The CC0 section is safest. Outside CC0, licenses vary per asset/creator and you must read each page.",
+      "beginner_tip": "Use the CC0 filters to avoid licensing headaches."
+    },
+    "craftpix": {
+      "name": "CraftPix",
+      "url": "https://craftpix.net/freebies/",
+      "short_description": "High-quality 2D packs (sprites, UI, icons). Has freebies, but a lot is premium or membership-based.",
+      "free_level": "freemium",
+      "commercial_use": "yes",
+      "license_notes": "Claims commercial use allowed, but it is a store model. Always read their license details per download/product.",
+      "beginner_tip": "Good for polish, but not the first stop if you want pure CC0 simplicity."
+    },
+    "openverse": {
+      "name": "Openverse",
+      "url": "https://openverse.org/",
+      "short_description": "Search engine for Creative Commons content (images and audio). Best used when you need a specific thing and can filter by license.",
+      "free_level": "free_mixed",
+      "commercial_use": "yes_with_license_filter",
+      "license_notes": "Aggregates CC-licensed content. You must follow the source license and attribution rules.",
+      "beginner_tip": "Use as a last-mile search tool after the dedicated game-asset sites."
+    },
+    "unity_asset_store": {
+      "name": "Unity Asset Store",
+      "url": "https://assetstore.unity.com/",
+      "short_description": "Massive library for everything (2D, 3D, audio, textures), but licensing is not CC0 and redistribution rules are strict.",
+      "free_level": "freemium",
+      "commercial_use": "yes_with_conditions",
+      "license_notes": "Standard EULA style licensing; generally you can ship games using assets, but cannot redistribute raw assets as asset packs.",
+      "beginner_tip": "Great for speed, but store the invoice/license proof and avoid anything you cannot legally include in a repo."
+    }
+  },
+  "rankings_by_category": {
+    "Sound effects": [
+      { "rank": 1, "site_id": "kenney", "why": "Game-ready SFX packs, beginner-friendly, typically CC0." },
+      { "rank": 2, "site_id": "sonniss_gdc", "why": "Huge pro-quality bundles, commercial-friendly, no attribution in practice." },
+      { "rank": 3, "site_id": "pixabay", "why": "Easy, free, no attribution in typical use; wide selection." },
+      { "rank": 4, "site_id": "freesound", "why": "Largest searchable library, but license varies per sound. Use CC0 filter." },
+      { "rank": 5, "site_id": "youtube_audio_library", "why": "Safe source for creators, but track requirements vary." },
+      { "rank": 6, "site_id": "opengameart", "why": "Good selection, but mixed licenses and inconsistent quality." },
+      { "rank": 7, "site_id": "zapsplat", "why": "Large library, but free tier usually requires attribution." },
+      { "rank": 8, "site_id": "itchio_cc0", "why": "Great CC0 discovery, but less centralized searching than dedicated audio sites." },
+      { "rank": 9, "site_id": "unity_asset_store", "why": "Lots of free SFX packs, but stricter EULA and not CC0." },
+      { "rank": 10, "site_id": "openverse", "why": "Good for finding specific CC audio, but you must verify source licenses carefully." }
+    ],
+    "Music": [
+      { "rank": 1, "site_id": "pixabay", "why": "Fast downloads, broad library, commercial-friendly baseline." },
+      { "rank": 2, "site_id": "incompetech", "why": "Reliable classic library; free with attribution or paid to remove it." },
+      { "rank": 3, "site_id": "youtube_audio_library", "why": "Solid free music; some tracks require attribution." },
+      { "rank": 4, "site_id": "opengameart", "why": "Good variety, but licenses vary and quality is inconsistent." },
+      { "rank": 5, "site_id": "free_music_archive", "why": "Good discovery, but you must filter to commercial-allowed licenses." },
+      { "rank": 6, "site_id": "ccmixter", "why": "Creative Commons library; licensing varies but usually explicit." },
+      { "rank": 7, "site_id": "zapsplat", "why": "Music exists, but free tier often requires attribution." },
+      { "rank": 8, "site_id": "itchio_cc0", "why": "Some great CC0 music packs exist; discovery is the main advantage." },
+      { "rank": 9, "site_id": "openverse", "why": "Aggregator, helpful when you need something specific and can filter licenses." }
+    ],
+    "3d models": [
+      { "rank": 1, "site_id": "kenney", "why": "Optimized, consistent, beginner-friendly, typically CC0." },
+      { "rank": 2, "site_id": "kaylousberg", "why": "Excellent low-poly prototyping packs; many explicitly CC0." },
+      { "rank": 3, "site_id": "quaternius", "why": "Fast stylized packs for prototypes and simple shipped games; check pack license." },
+      { "rank": 4, "site_id": "poly_haven", "why": "High-quality models with CC0, strong legal safety." },
+      { "rank": 5, "site_id": "ambientcg", "why": "CC0 models plus textures; very useful for environments." },
+      { "rank": 6, "site_id": "texturecan", "why": "CC0 models and textures; good fill-in library." },
+      { "rank": 7, "site_id": "sharetextures", "why": "CC0 positioning with platform ToS; still very usable for games." },
+      { "rank": 8, "site_id": "polypizza", "why": "Great variety, but license is per model and not always CC0." },
+      { "rank": 9, "site_id": "sketchfab", "why": "Huge selection, but licensing varies widely. Must filter carefully." },
+      { "rank": 10, "site_id": "mixamo", "why": "Great for character prototyping, but not a CC0 asset library and has redistribution limits." },
+      { "rank": 11, "site_id": "unity_asset_store", "why": "Lots of free models, but EULA-based licensing and restrictions on redistribution." },
+      { "rank": 12, "site_id": "itchio_cc0", "why": "Strong CC0 packs exist; discovery-focused rather than a single library." }
+    ],
+    "Vector icons": [
+      { "rank": 1, "site_id": "kenney", "why": "Game UI packs with consistent style, often includes vector sources, typically CC0." },
+      { "rank": 2, "site_id": "material_icons", "why": "Clean, consistent, commercial-friendly licensing." },
+      { "rank": 3, "site_id": "heroicons", "why": "MIT licensed, clean icons, great for minimal UI." },
+      { "rank": 4, "site_id": "svgrepo", "why": "Huge library, but license varies per icon. Prefer public domain/CC0 icons." },
+      { "rank": 5, "site_id": "font_awesome", "why": "Very useful UI icons; licensing differs by component and many icons are premium." },
+      { "rank": 6, "site_id": "game_icons_net", "why": "Very game-relevant icons but typically requires attribution (CC BY)." },
+      { "rank": 7, "site_id": "openclipart", "why": "CC0 but style consistency is random; best for placeholders." },
+      { "rank": 8, "site_id": "flaticon", "why": "Freemium with common attribution requirements and paywalls." },
+      { "rank": 9, "site_id": "itchio_cc0", "why": "Good for CC0 UI/icon packs from creators." }
+    ],
+    "2d art/sprites": [
+      { "rank": 1, "site_id": "kenney", "why": "Best beginner choice: clean packs, consistent style, typically CC0." },
+      { "rank": 2, "site_id": "opengameart", "why": "Huge variety, but filter hard for commercial-safe licenses." },
+      { "rank": 3, "site_id": "itchio_cc0", "why": "Great CC0 discovery for sprites/tilesets/UI from many creators." },
+      { "rank": 4, "site_id": "craftpix", "why": "Good quality freebies, but much is premium and license is store-based." },
+      { "rank": 5, "site_id": "openclipart", "why": "CC0 clipart can work for UI and placeholders, but game-ready sprites vary." },
+      { "rank": 6, "site_id": "pixabay", "why": "Can help for backgrounds and general art, but not game-sprite focused." },
+      { "rank": 7, "site_id": "openverse", "why": "Good search layer if you need a specific thing and can filter by license." },
+      { "rank": 8, "site_id": "unity_asset_store", "why": "Many free 2D packs, but EULA-based, not CC0, and style is inconsistent." }
+    ],
+    "Textures": [
+      { "rank": 1, "site_id": "poly_haven", "why": "Top quality + CC0. Best legal simplicity for commercial projects." },
+      { "rank": 2, "site_id": "ambientcg", "why": "Massive CC0 PBR library, excellent coverage." },
+      { "rank": 3, "site_id": "texturecan", "why": "CC0 textures, solid selection." },
+      { "rank": 4, "site_id": "sharetextures", "why": "CC0 positioning plus ToS constraints; still great for games." },
+      { "rank": 5, "site_id": "3dtextures_me", "why": "CC0 emphasis, lots of materials." },
+      { "rank": 6, "site_id": "cgbookcase", "why": "Good backup library, free textures with no-restriction positioning." },
+      { "rank": 7, "site_id": "textures_com", "why": "Allowed for games even on free account, but not CC0 and has stricter rules." },
+      { "rank": 8, "site_id": "itchio_cc0", "why": "Surprisingly good CC0 texture packs exist, discovery is the advantage." },
+      { "rank": 9, "site_id": "unity_asset_store", "why": "Many texture packs, but EULA restrictions and inconsistent quality." },
+      { "rank": 10, "site_id": "openverse", "why": "Aggregator, useful when you need something specific and can filter licenses." }
+    ]
+  }
+}
