@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Indie | First Game Idea Generator</title>
+  <meta name="description" content="Generate a random beginner-friendly game idea and explore the full list of Smart Indie starter concepts.">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="assets/favicon/favicon.ico">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a class="logo" href="index.html">Bjorvand Solutions</a>
+      <nav aria-label="Primary">
+        <div class="nav-links">
+          <a href="index.html">Smart Indie</a>
+          <a href="games.html">Games</a>
+          <a href="about-contact.html">About & Contact</a>
+        </div>
+      </nav>
+      <div class="nav-actions">
+        <a class="button primary nav-cta" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Join now</a>
+        <a class="button ghost" href="https://apps.smartindie.dev">Login</a>
+        <button class="burger" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Smart Indie</a>
+      <a href="games.html">Games</a>
+      <a href="about-contact.html">About & Contact</a>
+      <a href="https://apps.smartindie.dev">Login</a>
+    </div>
+  </header>
+
+  <main>
+    <section aria-labelledby="idea-generator-title" class="idea-generator" data-reveal>
+      <h1 id="idea-generator-title">First game idea generator</h1>
+      <p class="hero-sub">Grab a quick, beginner-friendly concept and scan the full catalog of 50 tiny game ideas. Every idea includes mechanics, win/lose rules, and mini prototype steps.</p>
+
+      <div class="card idea-highlight">
+        <div class="idea-highlight-header">
+          <div>
+            <div class="pill" id="idea-badge">Loading ideas…</div>
+            <h2 id="idea-name">Select a random idea</h2>
+            <p id="idea-description" class="hero-sub">Tap the button to pull a fresh microgame concept.</p>
+          </div>
+          <button class="button primary" id="randomIdeaButton" type="button">New random idea</button>
+        </div>
+
+        <dl class="idea-meta" id="idea-meta">
+          <div>
+            <dt>Core mechanic</dt>
+            <dd id="idea-core">—</dd>
+          </div>
+          <div>
+            <dt>Gameplay loop</dt>
+            <dd id="idea-loop">—</dd>
+          </div>
+          <div>
+            <dt>Win conditions</dt>
+            <dd id="idea-win">—</dd>
+          </div>
+          <div>
+            <dt>Lose conditions</dt>
+            <dd id="idea-lose">—</dd>
+          </div>
+        </dl>
+
+        <div class="idea-blocks">
+          <div class="idea-block">
+            <h3>Prototype steps</h3>
+            <ul id="idea-prototypes"></ul>
+          </div>
+          <div class="idea-block">
+            <h3>Learning focus</h3>
+            <ul id="idea-learning"></ul>
+          </div>
+          <div class="idea-block">
+            <h3>Future game relevance</h3>
+            <ul id="idea-relevance"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card idea-constraints" data-reveal>
+        <h2>Global constraints</h2>
+        <p class="hero-sub">Use these guidelines to keep the first game scope tiny and finishable.</p>
+        <dl class="idea-meta">
+          <div>
+            <dt>Difficulty</dt>
+            <dd id="idea-difficulty">—</dd>
+          </div>
+          <div>
+            <dt>Dimension</dt>
+            <dd id="idea-dimension">—</dd>
+          </div>
+          <div>
+            <dt>Asset guideline</dt>
+            <dd id="idea-assets">—</dd>
+          </div>
+          <div>
+            <dt>Scope guideline</dt>
+            <dd id="idea-scope">—</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="idea-catalog" data-reveal>
+        <h2>All 50 ideas</h2>
+        <p class="hero-sub">Browse the full list or use the randomizer above to explore one at a time.</p>
+        <div class="idea-list" id="ideaList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+      <div class="footer-content">
+        <div>© Bjorvand Solutions 2025 • Org nr 836135652</div>
+        <div class="footer-links">
+          <a href="index.html">Smart Indie</a>
+          <a href="games.html">Games</a>
+          <a href="about-contact.html">About & Contact</a>
+      </div>
+      <div>kevin@smartindie.dev</div>
+    </div>
+  </footer>
+  <script src="assets/script.js"></script>
+  <script src="assets/idea-generator.js"></script>
+</body>
+</html>
