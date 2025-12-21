@@ -8,17 +8,28 @@ const formatLabel = value =>
     .replace(/_/g, ' ')
     .replace(/\b\w/g, char => char.toUpperCase());
 
-const buildCategoryMap = rankings => {
-  const map = {};
+const normalizeCategory = value => value.trim().toLowerCase();
+
+const buildCategoryData = rankings => {
+  const siteCategories = {};
+  const categoryRanks = {};
+  const normalizedLabels = {};
+
   Object.entries(rankings).forEach(([category, rankedSites]) => {
+    const normalized = normalizeCategory(category);
+    normalizedLabels[normalized] = category;
+    categoryRanks[normalized] = {};
+
     rankedSites.forEach(entry => {
-      if (!map[entry.site_id]) {
-        map[entry.site_id] = new Set();
+      if (!siteCategories[entry.site_id]) {
+        siteCategories[entry.site_id] = new Map();
       }
-      map[entry.site_id].add(category);
+      siteCategories[entry.site_id].set(normalized, category);
+      categoryRanks[normalized][entry.site_id] = entry.rank;
     });
   });
-  return map;
+
+  return { siteCategories, categoryRanks, normalizedLabels };
 };
 
 const renderFilters = categories => {
@@ -34,20 +45,26 @@ const renderFilters = categories => {
       button.setAttribute('aria-pressed', 'false');
     }
     button.textContent = category;
-    button.dataset.category = category;
+    button.dataset.category = normalizeCategory(category);
     filtersContainer.appendChild(button);
   });
 };
 
-const renderCards = (sites, categoryMap) => {
+const renderCards = (sites, categoryData) => {
   const cards = [];
   Object.entries(sites).forEach(([siteId, site]) => {
-    const categories = Array.from(categoryMap[siteId] || []);
-    categories.sort();
+    const categoryEntries = categoryData.siteCategories[siteId];
+    const categories = categoryEntries ? Array.from(categoryEntries.values()) : [];
+    const normalizedCategories = categoryEntries
+      ? Array.from(categoryEntries.keys())
+      : [];
+    categories.sort((a, b) => a.localeCompare(b));
+    normalizedCategories.sort();
 
     const card = document.createElement('article');
     card.className = 'card asset-card';
-    card.dataset.categories = categories.join('|');
+    card.dataset.categories = normalizedCategories.join('|');
+    card.dataset.siteId = siteId;
 
     const image = document.createElement('div');
     image.className = 'asset-image';
@@ -66,7 +83,7 @@ const renderCards = (sites, categoryMap) => {
     const meta = document.createElement('div');
     meta.className = 'asset-meta';
     meta.innerHTML = `
-      <span class="meta-pill">Free: ${formatLabel(site.free_level)}</span>
+      <span class="meta-pill">Pricing: ${formatLabel(site.free_level)}</span>
       <span class="meta-pill">Commercial: ${formatLabel(site.commercial_use)}</span>
     `;
 
@@ -108,14 +125,21 @@ const renderCards = (sites, categoryMap) => {
   return cards;
 };
 
-const applyFilter = (cards, category) => {
+const applyFilter = (cards, category, categoryRanks) => {
   let visibleCount = 0;
+  const rankMap = categoryRanks[category] || {};
   cards.forEach(card => {
     const categories = card.dataset.categories
       ? card.dataset.categories.split('|').filter(Boolean)
       : [];
-    const matches = category === 'All' || categories.includes(category);
+    const matches = category === 'all' || categories.includes(category);
     card.hidden = !matches;
+    if (matches && category !== 'all') {
+      const rank = rankMap[card.dataset.siteId] ?? Number.MAX_SAFE_INTEGER;
+      card.style.order = String(rank);
+    } else {
+      card.style.order = '';
+    }
     if (matches) visibleCount += 1;
   });
 
@@ -142,22 +166,22 @@ const init = async () => {
     const response = await fetch('assets/AssetWebsitesList.json');
     const data = await response.json();
 
-    const categoryMap = buildCategoryMap(data.rankings_by_category);
+    const categoryData = buildCategoryData(data.rankings_by_category);
     renderFilters(data.categories);
-    const cards = renderCards(data.sites, categoryMap);
+    const cards = renderCards(data.sites, categoryData);
 
     const setCategory = category => {
       updateActiveButton(category);
-      applyFilter(cards, category);
+      applyFilter(cards, category, categoryData.categoryRanks);
     };
 
     filtersContainer.addEventListener('click', event => {
       const button = event.target.closest('.filter-button');
       if (!button) return;
-      setCategory(button.dataset.category || 'All');
+      setCategory(button.dataset.category || 'all');
     });
 
-    setCategory('All');
+    setCategory('all');
   } catch (error) {
     count.textContent = 'Unable to load asset websites right now.';
   }
