@@ -64,6 +64,19 @@
       margin-top: 20px;
     }
 
+    .timer-footer {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .timer-footer .button {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .button {
       border: 1px solid var(--border);
       background: transparent;
@@ -122,9 +135,13 @@
       <div class="timer-actions" role="group" aria-label="Timer controls">
         <button class="button primary" id="playPauseButton" type="button">Play</button>
         <button class="button" id="resetButton" type="button">Reset</button>
+        <button class="button" id="fullScreenButton" type="button">Full screen</button>
       </div>
 
       <div class="timer-status" id="timerStatus">Ready to focus.</div>
+      <div class="timer-footer">
+        <a class="button" href="apps.html">Return to apps</a>
+      </div>
       <audio id="completionSound" preload="auto" src="assets/smooth-completed-notify-starting-alert-274739.mp3"></audio>
     </section>
   </main>
@@ -133,6 +150,7 @@
     const display = document.getElementById('timerDisplay');
     const playPauseButton = document.getElementById('playPauseButton');
     const resetButton = document.getElementById('resetButton');
+    const fullScreenButton = document.getElementById('fullScreenButton');
     const statusText = document.getElementById('timerStatus');
     const completionSound = document.getElementById('completionSound');
     const durationButtons = Array.from(document.querySelectorAll('[data-minutes]'));
@@ -226,8 +244,32 @@
       statusText.textContent = 'Ready to focus.';
     });
 
+    const updateFullScreenButton = () => {
+      if (document.fullscreenElement) {
+        fullScreenButton.textContent = 'Exit full screen';
+        return;
+      }
+      fullScreenButton.textContent = 'Full screen';
+    };
+
+    fullScreenButton.addEventListener('click', async () => {
+      if (!document.fullscreenElement) {
+        try {
+          await document.documentElement.requestFullscreen();
+        } catch (error) {
+          console.error('Unable to enter full screen.', error);
+        }
+        return;
+      }
+
+      await document.exitFullscreen();
+    });
+
+    document.addEventListener('fullscreenchange', updateFullScreenButton);
+
     updateButtons();
     updateDisplay();
+    updateFullScreenButton();
   </script>
 </body>
 </html>
