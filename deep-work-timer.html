@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Work Timer</title>
+  <meta name="description" content="Minimalistic deep work timer with focus session lengths, playback controls, and completion chime.">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="assets/favicon/favicon.ico">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 18px 80px;
+    }
+
+    .timer-shell {
+      max-width: 540px;
+      width: 100%;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .timer-shell h1 {
+      margin-bottom: 10px;
+    }
+
+    .timer-shell p {
+      margin-bottom: 24px;
+    }
+
+    .timer-display {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin: 16px 0 24px;
+    }
+
+    .timer-controls,
+    .timer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .timer-actions {
+      margin-top: 20px;
+    }
+
+    .button {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), color var(--transition);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #0e1116;
+      border-color: transparent;
+    }
+
+    .button.ghost {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: transparent;
+    }
+
+    .button[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .timer-status {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="timer-shell" aria-labelledby="timer-title">
+      <h1 id="timer-title">Deep Work Timer</h1>
+      <p>Choose a session length, press play, and stay in the flow.</p>
+
+      <div class="timer-controls" role="group" aria-label="Session length">
+        <button class="button ghost" data-minutes="15" type="button">15 min</button>
+        <button class="button ghost" data-minutes="45" type="button">45 min</button>
+        <button class="button ghost" data-minutes="60" type="button">60 min</button>
+        <button class="button ghost" data-minutes="90" type="button">90 min</button>
+      </div>
+
+      <div class="timer-display" id="timerDisplay" aria-live="polite">60:00</div>
+
+      <div class="timer-actions" role="group" aria-label="Timer controls">
+        <button class="button primary" id="playPauseButton" type="button">Play</button>
+        <button class="button" id="resetButton" type="button">Reset</button>
+      </div>
+
+      <div class="timer-status" id="timerStatus">Ready to focus.</div>
+      <audio id="completionSound" preload="auto" src="assets/smooth-completed-notify-starting-alert-274739.mp3"></audio>
+    </section>
+  </main>
+
+  <script>
+    const display = document.getElementById('timerDisplay');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const resetButton = document.getElementById('resetButton');
+    const statusText = document.getElementById('timerStatus');
+    const completionSound = document.getElementById('completionSound');
+    const durationButtons = Array.from(document.querySelectorAll('[data-minutes]'));
+
+    let selectedMinutes = 60;
+    let remainingSeconds = selectedMinutes * 60;
+    let timerId = null;
+    let isRunning = false;
+
+    const formatTime = (totalSeconds) => {
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    };
+
+    const updateDisplay = () => {
+      display.textContent = formatTime(remainingSeconds);
+      document.title = `${formatTime(remainingSeconds)} • Deep Work Timer`;
+    };
+
+    const updateButtons = () => {
+      durationButtons.forEach((button) => {
+        const isActive = Number(button.dataset.minutes) === selectedMinutes;
+        button.classList.toggle('primary', isActive);
+        button.classList.toggle('ghost', !isActive);
+      });
+    };
+
+    const stopTimer = () => {
+      clearInterval(timerId);
+      timerId = null;
+      isRunning = false;
+      playPauseButton.textContent = 'Play';
+    };
+
+    const tick = () => {
+      if (remainingSeconds > 0) {
+        remainingSeconds -= 1;
+        updateDisplay();
+      }
+
+      if (remainingSeconds <= 0) {
+        remainingSeconds = 0;
+        updateDisplay();
+        statusText.textContent = 'Session complete. Great work!';
+        stopTimer();
+        completionSound.currentTime = 0;
+        completionSound.play();
+      }
+    };
+
+    const startTimer = () => {
+      if (isRunning) {
+        return;
+      }
+      isRunning = true;
+      playPauseButton.textContent = 'Pause';
+      statusText.textContent = 'Deep work session running.';
+      timerId = setInterval(tick, 1000);
+    };
+
+    durationButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        selectedMinutes = Number(button.dataset.minutes);
+        remainingSeconds = selectedMinutes * 60;
+        updateButtons();
+        updateDisplay();
+        statusText.textContent = 'Ready to focus.';
+        stopTimer();
+      });
+    });
+
+    playPauseButton.addEventListener('click', () => {
+      if (isRunning) {
+        stopTimer();
+        statusText.textContent = 'Paused.';
+        return;
+      }
+
+      if (remainingSeconds === 0) {
+        remainingSeconds = selectedMinutes * 60;
+        updateDisplay();
+      }
+      startTimer();
+    });
+
+    resetButton.addEventListener('click', () => {
+      stopTimer();
+      remainingSeconds = selectedMinutes * 60;
+      updateDisplay();
+      statusText.textContent = 'Ready to focus.';
+    });
+
+    updateButtons();
+    updateDisplay();
+  </script>
+</body>
+</html>
