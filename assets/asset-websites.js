@@ -69,7 +69,8 @@ const renderCards = (sites, categoryData) => {
     const image = document.createElement('div');
     image.className = 'asset-image';
     image.setAttribute('aria-hidden', 'true');
-    image.innerHTML = '<span>Image placeholder</span>';
+    // Using simple placeholder logic; in a real app, map site.name to an image file
+    image.innerHTML = '<span>Image</span>';
 
     const body = document.createElement('div');
     body.className = 'asset-card-body';
@@ -128,26 +129,43 @@ const renderCards = (sites, categoryData) => {
 const applyFilter = (cards, category, categoryRanks) => {
   let visibleCount = 0;
   const rankMap = categoryRanks[category] || {};
+
   cards.forEach(card => {
     const categories = card.dataset.categories
       ? card.dataset.categories.split('|').filter(Boolean)
       : [];
+    
+    // Determine if the card matches the current filter
     const matches = category === 'all' || categories.includes(category);
-    card.hidden = !matches;
-    if (matches && category !== 'all') {
-      const rank = rankMap[card.dataset.siteId] ?? Number.MAX_SAFE_INTEGER;
-      card.style.order = String(rank);
+
+    // FIX: Use inline style display to force hide/show.
+    // This overrides any CSS class definitions (like display: flex) that break the [hidden] attribute.
+    if (matches) {
+        card.style.display = ''; // Reverts to CSS default (e.g., flex or block)
+        visibleCount += 1;
+
+        // Apply Ranking Order
+        if (category !== 'all') {
+            const rank = rankMap[card.dataset.siteId];
+            // If rank exists use it, otherwise put at end (999)
+            card.style.order = (rank !== undefined) ? rank : 999;
+        } else {
+            // Reset order for 'All' view so they appear naturally
+            card.style.order = 0;
+        }
     } else {
-      card.style.order = '';
+        card.style.display = 'none';
+        card.style.order = 9999; // Push to end just in case
     }
-    if (matches) visibleCount += 1;
   });
 
   if (count) {
     count.textContent = `${visibleCount} website${visibleCount === 1 ? '' : 's'} shown`;
   }
   if (emptyState) {
-    emptyState.hidden = visibleCount !== 0;
+    // For the empty state container, standard hidden is usually fine, 
+    // but we can use display: none to be safe.
+    emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
   }
 };
 
@@ -183,6 +201,7 @@ const init = async () => {
 
     setCategory('all');
   } catch (error) {
+    console.error(error);
     count.textContent = 'Unable to load asset websites right now.';
   }
 };
