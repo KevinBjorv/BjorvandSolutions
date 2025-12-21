@@ -708,6 +708,125 @@ textarea {
   gap: 16px;
 }
 
+.asset-hero {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+
+.asset-guide ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.asset-toolbar {
+  display: grid;
+  gap: 16px;
+}
+
+.asset-toolbar-sub {
+  margin-bottom: 0;
+}
+
+.asset-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-button {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.filter-button.active,
+.filter-button:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.asset-count {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.asset-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.asset-card {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.asset-image {
+  height: 150px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(253, 129, 20, 0.2), rgba(58, 42, 29, 0.9));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.asset-card-body {
+  display: grid;
+  gap: 12px;
+}
+
+.asset-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.meta-pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.asset-notes {
+  margin: 0;
+  color: var(--muted);
+}
+
+.asset-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.asset-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.asset-empty {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .app-sidebar ul {
   margin: 0;
   padding-left: 18px;

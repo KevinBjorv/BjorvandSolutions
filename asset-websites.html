@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Indie | First Game Idea Generator</title>
-  <meta name="description" content="Generate a random beginner-friendly game idea and explore the full list of Smart Indie starter concepts.">
+  <title>Bjorvand Solutions | Asset Websites</title>
+  <meta name="description" content="Filter the best free asset websites for your first game by category and see beginner-friendly tips at a glance.">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
@@ -42,61 +42,43 @@
   </header>
 
   <main>
-    <section aria-labelledby="idea-generator-title" class="idea-generator" data-reveal>
-      <h1 id="idea-generator-title">First game idea generator</h1>
-      <p class="hero-sub">Grab a quick, beginner-friendly concept and scan the full catalog of 50 tiny game ideas. Every idea includes mechanics, win/lose rules, and mini prototype steps.</p>
-
-      <div class="card idea-highlight">
-        <div class="idea-highlight-header">
-          <div>
-            <div class="pill" id="idea-badge">Loading ideas…</div>
-            <h2 id="idea-name">Select a random idea</h2>
-            <p id="idea-description" class="hero-sub">Tap the button to pull a fresh microgame concept.</p>
-          </div>
-          <button class="button primary" id="randomIdeaButton" type="button">New random idea</button>
-        </div>
-
-        <dl class="idea-meta" id="idea-meta">
-          <div>
-            <dt>Core mechanic</dt>
-            <dd id="idea-core">—</dd>
-          </div>
-          <div>
-            <dt>Gameplay loop</dt>
-            <dd id="idea-loop">—</dd>
-          </div>
-          <div>
-            <dt>Win conditions</dt>
-            <dd id="idea-win">—</dd>
-          </div>
-          <div>
-            <dt>Lose conditions</dt>
-            <dd id="idea-lose">—</dd>
-          </div>
-        </dl>
-
-        <div class="idea-blocks">
-          <div class="idea-block">
-            <h3>Prototype steps</h3>
-            <ul id="idea-prototypes"></ul>
-          </div>
-          <div class="idea-block">
-            <h3>Learning focus</h3>
-            <ul id="idea-learning"></ul>
-          </div>
-          <div class="idea-block">
-            <h3>Future game relevance</h3>
-            <ul id="idea-relevance"></ul>
-          </div>
-        </div>
+    <section class="asset-hero" aria-labelledby="asset-title" data-reveal>
+      <div class="asset-hero-content">
+        <p class="pill">Asset starter pack</p>
+        <h1 id="asset-title">Best free asset websites for your first game</h1>
+        <p class="hero-sub">Filter by category to find beginner-friendly sites for sound, music, art, and textures. Every entry includes a quick usage summary so you can stay organized while you build.</p>
       </div>
+      <div class="card asset-guide" data-reveal data-reveal-delay="80ms">
+        <h3>Fast license sanity check</h3>
+        <ul>
+          <li><strong>CC0</strong> is simplest (commercial use, no attribution).</li>
+          <li><strong>CC BY</strong> allows commercial use but needs credits.</li>
+          <li><strong>NC</strong> means you cannot ship commercially.</li>
+          <li><strong>SA/GPL</strong> can add sharing obligations.</li>
+        </ul>
+      </div>
+    </section>
 
+    <section aria-labelledby="asset-filter-title" data-reveal>
+      <div class="asset-toolbar card">
+        <div>
+          <h2 id="asset-filter-title">Filter by category</h2>
+          <p class="asset-toolbar-sub">Pick one category to see recommended sites. Every card links straight to the library.</p>
+        </div>
+        <div class="asset-filters" id="categoryFilters" role="tablist" aria-label="Asset categories"></div>
+        <div class="asset-count" id="assetCount">Loading websites…</div>
+      </div>
+      <div class="asset-grid" id="assetGrid"></div>
+      <div class="card asset-empty" id="assetEmpty" hidden>
+        <h3>No sites found</h3>
+        <p>Try a different category to reveal more options.</p>
+      </div>
     </section>
   </main>
 
   <footer>
-      <div class="footer-content">
-        <div>© Bjorvand Solutions 2025 • Org nr 836135652</div>
+    <div class="footer-content">
+      <div>© Bjorvand Solutions 2025 • Org nr 836135652</div>
       <div class="footer-links">
         <a href="index.html">Smart Indie</a>
         <a href="games.html">Games</a>
@@ -108,6 +90,6 @@
     </div>
   </footer>
   <script src="assets/script.js"></script>
-  <script src="assets/idea-generator.js"></script>
+  <script src="assets/asset-websites.js"></script>
 </body>
 </html>
