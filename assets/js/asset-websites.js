@@ -181,7 +181,7 @@ const init = async () => {
   if (!filtersContainer || !grid || !count) return;
 
   try {
-    const response = await fetch('assets/AssetWebsitesList.json');
+    const response = await fetch('../assets/data/AssetWebsitesList.json');
     const data = await response.json();
 
     const categoryData = buildCategoryData(data.rankings_by_category);

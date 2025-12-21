@@ -132,7 +132,7 @@ const pickRandomIdea = () => {
 };
 
 const loadIdeas = async () => {
-  const response = await fetch('assets/smartindie_first_game_ideas.json');
+  const response = await fetch('../assets/data/smartindie_first_game_ideas.json');
   const data = await response.json();
   ideas = data.ideas;
 
