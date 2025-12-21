@@ -1,0 +1,1661 @@
+{
+  "schema_version": "1.0",
+  "difficulty": "beginner_microgame",
+  "constraints": {
+    "dimension": "2D",
+    "asset_guideline": "Use simple shapes or 1-color sprites you can draw yourself. Avoid heavy external asset packs.",
+    "scope_guideline": "One core mechanic plus a small scoring or objective layer."
+  },
+  "ideas": [
+    {
+      "id": 1,
+      "name": "One-Button Hopper",
+      "short_description": "A tiny platformer where you only control jump timing to hop across moving gaps.",
+      "core_mechanic": "Single-button jump with variable height (tap vs hold).",
+      "gameplay_loop": "Wait for the right moment, jump to the next platform, collect coins for score, repeat until you reach the exit.",
+      "win_conditions": "Reach the exit flag with at least 1 life remaining.",
+      "lose_conditions": "Fall off the screen or run out of lives.",
+      "prototypes": [
+        {
+          "name": "Jump Feel",
+          "goal": "Implement tap vs hold jump height and a simple ground check."
+        },
+        {
+          "name": "Moving Platforms",
+          "goal": "Add one moving platform type and make landing stable."
+        },
+        {
+          "name": "Checkpoint + Lives",
+          "goal": "Add respawn at checkpoint, lives counter, and restart on zero."
+        }
+      ],
+      "learning_focus": [
+        "2D physics basics (gravity, collisions)",
+        "Input timing and game feel",
+        "Simple state management (alive, dead, respawn)"
+      ],
+      "future_game_relevance": [
+        "platformers",
+        "precision games",
+        "endless runners"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Color Swap Dodger",
+      "short_description": "Dodge incoming shapes by switching your player color to match safe lanes.",
+      "core_mechanic": "Toggle between two colors that determine what obstacles can hurt you.",
+      "gameplay_loop": "Obstacles scroll in, you switch color and move left or right to survive, score increases over time.",
+      "win_conditions": "Survive for 60 seconds (or reach a target score).",
+      "lose_conditions": "Touch an obstacle that does not match your current color.",
+      "prototypes": [
+        {
+          "name": "Two-Color Player",
+          "goal": "Toggle color and update player visuals."
+        },
+        {
+          "name": "Obstacle Stream",
+          "goal": "Spawn obstacles in lanes with speed that slowly increases."
+        },
+        {
+          "name": "Hit Rules",
+          "goal": "Implement color-based collision and a clean game over screen."
+        }
+      ],
+      "learning_focus": [
+        "Spawning and pooling basics",
+        "Rule-based collisions (tags, layers)",
+        "Difficulty ramping"
+      ],
+      "future_game_relevance": [
+        "arcade dodgers",
+        "rhythm-like timing games",
+        "mobile endless games"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Top-Down Package Runner",
+      "short_description": "Pick up packages and deliver them to matching drop-off zones before time runs out.",
+      "core_mechanic": "Pickup and drop items with simple interaction prompts.",
+      "gameplay_loop": "Grab a package, navigate around walls, deliver to the correct zone, repeat for a score streak.",
+      "win_conditions": "Deliver N packages before the timer ends.",
+      "lose_conditions": "Timer reaches zero.",
+      "prototypes": [
+        {
+          "name": "Top-Down Movement",
+          "goal": "Implement 4-direction movement with collision against walls."
+        },
+        {
+          "name": "Pickup System",
+          "goal": "Press a key near an item to pick it up and carry it."
+        },
+        {
+          "name": "Deliver + Timer",
+          "goal": "Drop off to the right zone, increase score, and end on timeout."
+        }
+      ],
+      "learning_focus": [
+        "Triggers and interactions",
+        "UI basics (timer, score)",
+        "Simple objective systems"
+      ],
+      "future_game_relevance": [
+        "top-down action",
+        "delivery games",
+        "quest systems"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Bubble Pop Aim Trainer",
+      "short_description": "Pop bubbles that float up by clicking or tapping them before they escape.",
+      "core_mechanic": "Pointer-based aim and click detection on moving targets.",
+      "gameplay_loop": "Bubbles spawn, rise and drift, you pop them for points, misses reduce accuracy or lives.",
+      "win_conditions": "Reach a target score within the time limit.",
+      "lose_conditions": "Run out of lives due to misses or escaped bubbles.",
+      "prototypes": [
+        {
+          "name": "Clickable Targets",
+          "goal": "Spawn circles and detect clicks to destroy them."
+        },
+        {
+          "name": "Motion Patterns",
+          "goal": "Add rising and slight horizontal drift with random speed."
+        },
+        {
+          "name": "Scoring + Misses",
+          "goal": "Track hits, misses, and end the game cleanly."
+        }
+      ],
+      "learning_focus": [
+        "Mouse or touch input",
+        "Simple motion and randomness",
+        "Score systems and feedback"
+      ],
+      "future_game_relevance": [
+        "shooters",
+        "whack-a-mole",
+        "mobile tap games"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Laser Mirror Puzzle",
+      "short_description": "Rotate mirrors to guide a laser from a source to a target.",
+      "core_mechanic": "Rotate mirror pieces to redirect a ray.",
+      "gameplay_loop": "Place or rotate mirrors, test the laser path, adjust until the beam hits the goal.",
+      "win_conditions": "Laser hits the target for 2 seconds.",
+      "lose_conditions": "No lose state, but you can reset the level.",
+      "prototypes": [
+        {
+          "name": "Raycast Laser",
+          "goal": "Draw a laser line and stop it on walls."
+        },
+        {
+          "name": "Mirror Reflection",
+          "goal": "Reflect the laser off mirror surfaces."
+        },
+        {
+          "name": "Goal Detection",
+          "goal": "Detect when the beam hits the target and complete the level."
+        }
+      ],
+      "learning_focus": [
+        "Raycasting and line rendering",
+        "Puzzle state and resets",
+        "Rotation and snap angles"
+      ],
+      "future_game_relevance": [
+        "puzzle games",
+        "logic games",
+        "level-based design"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Conveyor Sorter",
+      "short_description": "Sort falling shapes into the correct bins by flipping a gate.",
+      "core_mechanic": "Toggle a gate that routes objects left or right.",
+      "gameplay_loop": "Items come down a conveyor, you toggle the gate based on item type, keep streak for points.",
+      "win_conditions": "Sort 30 items with at least 80% accuracy.",
+      "lose_conditions": "Accuracy drops below 80% after 30 items, or too many wrong sorts in a row.",
+      "prototypes": [
+        {
+          "name": "Conveyor Spawn",
+          "goal": "Spawn shapes at intervals and move them along a path."
+        },
+        {
+          "name": "Gate Toggle",
+          "goal": "Flip a gate to send items to left or right."
+        },
+        {
+          "name": "Bins + Accuracy",
+          "goal": "Detect bin entry, score correct sorts, track accuracy."
+        }
+      ],
+      "learning_focus": [
+        "Triggers and object routing",
+        "Basic statistics (accuracy, streak)",
+        "Increasing speed over time"
+      ],
+      "future_game_relevance": [
+        "factory games",
+        "automation puzzle",
+        "timing games"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Orbit Defender",
+      "short_description": "Protect a planet by rotating a shield around it to block incoming meteors.",
+      "core_mechanic": "Rotate a shield around a center point.",
+      "gameplay_loop": "Meteors fly toward the planet, rotate shield to intercept, survive waves to build score.",
+      "win_conditions": "Survive 3 waves.",
+      "lose_conditions": "Planet takes 3 hits.",
+      "prototypes": [
+        {
+          "name": "Orbit Movement",
+          "goal": "Rotate a shield around a planet using left and right input."
+        },
+        {
+          "name": "Meteor Spawner",
+          "goal": "Spawn meteors from random edges that move toward the center."
+        },
+        {
+          "name": "Health System",
+          "goal": "Block reduces meteor, misses damage planet, show health UI."
+        }
+      ],
+      "learning_focus": [
+        "Polar or orbit math",
+        "Enemy spawning and targeting",
+        "Health and wave progression"
+      ],
+      "future_game_relevance": [
+        "tower defense",
+        "arena survival",
+        "action arcade"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Line Draw Bridge",
+      "short_description": "Draw a single line to create a bridge so a ball can roll into the goal.",
+      "core_mechanic": "Player-drawn physics line that becomes a platform.",
+      "gameplay_loop": "See the ball and goal, draw a line, press play, the ball rolls, iterate until it lands in the goal.",
+      "win_conditions": "Ball enters the goal zone.",
+      "lose_conditions": "Ball falls off screen or stops moving for 5 seconds.",
+      "prototypes": [
+        {
+          "name": "Draw Line",
+          "goal": "Draw with mouse to create a line mesh or collider."
+        },
+        {
+          "name": "Physics Ball",
+          "goal": "Spawn a ball and let gravity roll it on the drawn line."
+        },
+        {
+          "name": "Goal Zone",
+          "goal": "Detect win and add reset button for retries."
+        }
+      ],
+      "learning_focus": [
+        "Custom input tools (drawing)",
+        "Physics interactions",
+        "Rapid iteration and reset loops"
+      ],
+      "future_game_relevance": [
+        "physics puzzlers",
+        "sandbox games",
+        "creative tools"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Stealth Light Cones",
+      "short_description": "Sneak from start to exit while avoiding moving guard light cones.",
+      "core_mechanic": "Avoid detection zones that sweep back and forth.",
+      "gameplay_loop": "Move between cover spots, time your runs past light cones, reach the exit.",
+      "win_conditions": "Reach the exit without being detected 3 times.",
+      "lose_conditions": "Get detected 3 times.",
+      "prototypes": [
+        {
+          "name": "Detection Zones",
+          "goal": "Make cone-shaped trigger zones that detect the player."
+        },
+        {
+          "name": "Sweeping Movement",
+          "goal": "Rotate cones back and forth with adjustable speed."
+        },
+        {
+          "name": "Alert + Reset",
+          "goal": "On detection, play alert feedback and reset to last checkpoint."
+        }
+      ],
+      "learning_focus": [
+        "Triggers and visibility rules",
+        "Timing-based gameplay",
+        "Checkpoint and fail states"
+      ],
+      "future_game_relevance": [
+        "stealth games",
+        "puzzle stealth",
+        "top-down adventure"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Simple Farming Clicker",
+      "short_description": "Plant, wait, harvest, and upgrade your tiny farm with simple timers.",
+      "core_mechanic": "Click a plot to change its state: empty, planted, grown, harvested.",
+      "gameplay_loop": "Plant seeds, wait a short time, harvest for coins, buy faster growth upgrades, repeat.",
+      "win_conditions": "Earn 100 coins.",
+      "lose_conditions": "No lose state, but you can reset progress.",
+      "prototypes": [
+        {
+          "name": "Plot States",
+          "goal": "Create a plot with 3 states and click to progress."
+        },
+        {
+          "name": "Growth Timer",
+          "goal": "Add a timer that turns planted into grown."
+        },
+        {
+          "name": "Coins + Upgrade",
+          "goal": "Add coins and one upgrade that reduces growth time."
+        }
+      ],
+      "learning_focus": [
+        "State machines (simple)",
+        "Timers and coroutines",
+        "Basic economy and upgrades"
+      ],
+      "future_game_relevance": [
+        "management games",
+        "idle games",
+        "simulation loops"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Pinball Pocket",
+      "short_description": "A tiny pinball table with two flippers and bumpers for points.",
+      "core_mechanic": "Flippers apply impulse to a ball.",
+      "gameplay_loop": "Launch the ball, use flippers to keep it alive, hit bumpers to score, avoid draining.",
+      "win_conditions": "Reach a target score before losing all balls.",
+      "lose_conditions": "All balls are drained.",
+      "prototypes": [
+        {
+          "name": "Ball Physics",
+          "goal": "Create a ball with bouncy collisions and gravity."
+        },
+        {
+          "name": "Flipper Control",
+          "goal": "Implement two flippers that rotate and push the ball."
+        },
+        {
+          "name": "Bumpers + Score",
+          "goal": "Add bumpers that add points and a drain detector."
+        }
+      ],
+      "learning_focus": [
+        "Physics tuning",
+        "Input and joints",
+        "Score feedback"
+      ],
+      "future_game_relevance": [
+        "arcade physics",
+        "sports physics games",
+        "skill-based scoring"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Sokoban Mini",
+      "short_description": "Push boxes onto target tiles in a small grid puzzle.",
+      "core_mechanic": "Grid movement with box pushing rules.",
+      "gameplay_loop": "Move one tile at a time, push boxes, plan moves, finish when all targets are covered.",
+      "win_conditions": "All boxes are on target tiles.",
+      "lose_conditions": "No lose state, but you can reset and count moves.",
+      "prototypes": [
+        {
+          "name": "Grid Movement",
+          "goal": "Move the player on a grid with walls."
+        },
+        {
+          "name": "Push Rules",
+          "goal": "Push a box if the next tile is empty."
+        },
+        {
+          "name": "Win Check",
+          "goal": "Detect all targets filled and show completion UI."
+        }
+      ],
+      "learning_focus": [
+        "Grid systems",
+        "Rule enforcement",
+        "Level data and resets"
+      ],
+      "future_game_relevance": [
+        "puzzle games",
+        "turn-based games",
+        "tile-based RPGs"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Rhythm Tap Lanes",
+      "short_description": "Tap the correct lane when a note reaches the hit line.",
+      "core_mechanic": "Timing window for taps on lanes.",
+      "gameplay_loop": "Notes scroll down, you tap lane keys on beat, accuracy builds score, misses reduce streak.",
+      "win_conditions": "Finish the song with at least 70% accuracy.",
+      "lose_conditions": "Accuracy drops below 50% at any point (optional).",
+      "prototypes": [
+        {
+          "name": "Scrolling Notes",
+          "goal": "Spawn notes that move toward a hit line."
+        },
+        {
+          "name": "Hit Window",
+          "goal": "Check timing when player presses a lane key."
+        },
+        {
+          "name": "Accuracy UI",
+          "goal": "Track hit, miss, streak, and show results screen."
+        }
+      ],
+      "learning_focus": [
+        "Time-based scoring",
+        "Input buffering and timing windows",
+        "UI feedback and polish basics"
+      ],
+      "future_game_relevance": [
+        "rhythm games",
+        "timing combat systems",
+        "music-driven games"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Wind Glider",
+      "short_description": "Glide through wind currents and avoid spikes to reach a goal.",
+      "core_mechanic": "Hold to glide, release to drop, wind zones push you.",
+      "gameplay_loop": "Launch, glide through wind zones, avoid hazards, land on safe platforms, reach the exit.",
+      "win_conditions": "Reach the exit within 3 minutes.",
+      "lose_conditions": "Hit spikes or fall off screen.",
+      "prototypes": [
+        {
+          "name": "Glide Control",
+          "goal": "Implement slower fall when holding a button."
+        },
+        {
+          "name": "Wind Zones",
+          "goal": "Create areas that add force in a direction."
+        },
+        {
+          "name": "Hazards",
+          "goal": "Add spikes and a simple restart on collision."
+        }
+      ],
+      "learning_focus": [
+        "Forces and physics areas",
+        "Level pacing and flow",
+        "Simple hazard systems"
+      ],
+      "future_game_relevance": [
+        "platformers",
+        "flight games",
+        "physics movement games"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Guard the Garden",
+      "short_description": "Stop pests from reaching plants by placing one type of turret on a grid.",
+      "core_mechanic": "Place a turret that shoots automatically at nearest enemy.",
+      "gameplay_loop": "Enemies walk along a path, you place turrets, turrets shoot, you survive waves.",
+      "win_conditions": "Survive 5 waves.",
+      "lose_conditions": "3 enemies reach the plants.",
+      "prototypes": [
+        {
+          "name": "Path Enemies",
+          "goal": "Move enemies along a simple path of waypoints."
+        },
+        {
+          "name": "Turret Targeting",
+          "goal": "Turret finds nearest enemy and shoots a projectile."
+        },
+        {
+          "name": "Wave System",
+          "goal": "Spawn waves and end level on survival or leaks."
+        }
+      ],
+      "learning_focus": [
+        "Basic AI pathing (waypoints)",
+        "Targeting and projectiles",
+        "Wave and pacing systems"
+      ],
+      "future_game_relevance": [
+        "tower defense",
+        "strategy games",
+        "enemy wave games"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Magnet Collector",
+      "short_description": "Turn a magnet on and off to pull coins to you while avoiding pulling bombs.",
+      "core_mechanic": "Toggle magnetic force that attracts specific objects.",
+      "gameplay_loop": "Move around, toggle magnet, collect coins, avoid bombs, reach a score goal.",
+      "win_conditions": "Collect 20 coins.",
+      "lose_conditions": "Collect a bomb or take 3 hits.",
+      "prototypes": [
+        {
+          "name": "Attraction Force",
+          "goal": "Apply force toward player when magnet is on."
+        },
+        {
+          "name": "Object Types",
+          "goal": "Make coins attracted, bombs attracted, rocks not attracted."
+        },
+        {
+          "name": "Risk Reward",
+          "goal": "Add a safe radius and a hit system for bombs."
+        }
+      ],
+      "learning_focus": [
+        "Physics forces",
+        "Filtering by tags or layers",
+        "Risk reward design"
+      ],
+      "future_game_relevance": [
+        "arcade collection",
+        "physics games",
+        "loot magnet mechanics"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Mini Brawler Knockback",
+      "short_description": "A simple arena where you knock enemies out of the ring using directional attacks.",
+      "core_mechanic": "Short-range attack that applies knockback.",
+      "gameplay_loop": "Move, attack, knock enemies away, avoid getting knocked out, clear the arena.",
+      "win_conditions": "Knock out 10 enemies.",
+      "lose_conditions": "Player falls out of the arena.",
+      "prototypes": [
+        {
+          "name": "Arena Movement",
+          "goal": "Implement top-down movement and arena bounds."
+        },
+        {
+          "name": "Attack + Knockback",
+          "goal": "Attack in facing direction and push enemies back."
+        },
+        {
+          "name": "Ring Out",
+          "goal": "Detect falling out and handle win and lose screens."
+        }
+      ],
+      "learning_focus": [
+        "Hit detection and forces",
+        "Enemy spawning",
+        "Simple combat feedback"
+      ],
+      "future_game_relevance": [
+        "action games",
+        "brawlers",
+        "physics combat"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Memory Match Tiles",
+      "short_description": "Flip tiles to find matching pairs with a limited number of turns.",
+      "core_mechanic": "Reveal and match pairs.",
+      "gameplay_loop": "Flip two tiles, if match keep revealed, if not hide again, clear all pairs before turns run out.",
+      "win_conditions": "Match all pairs.",
+      "lose_conditions": "Use all turns without matching all pairs.",
+      "prototypes": [
+        {
+          "name": "Tile Flip",
+          "goal": "Click a tile to reveal its symbol and lock while flipped."
+        },
+        {
+          "name": "Match Logic",
+          "goal": "Compare two flipped tiles and decide match or hide."
+        },
+        {
+          "name": "Turns Limit",
+          "goal": "Add a turns counter and end screens."
+        }
+      ],
+      "learning_focus": [
+        "UI driven gameplay",
+        "Simple data structures (pairs)",
+        "Game state control"
+      ],
+      "future_game_relevance": [
+        "casual puzzle",
+        "card games",
+        "UI heavy games"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Mini Golf Flick",
+      "short_description": "Flick the ball with drag strength to reach the hole in few shots.",
+      "core_mechanic": "Drag to set shot direction and power.",
+      "gameplay_loop": "Aim, shoot, ball rolls and bounces, count strokes, finish the hole.",
+      "win_conditions": "Ball enters the hole within max strokes.",
+      "lose_conditions": "Exceed max strokes.",
+      "prototypes": [
+        {
+          "name": "Drag Shot",
+          "goal": "Drag mouse to set direction and power, apply impulse."
+        },
+        {
+          "name": "Hole Detection",
+          "goal": "Detect when ball reaches hole and stop movement."
+        },
+        {
+          "name": "Stroke Limit",
+          "goal": "Track strokes and reset on too many."
+        }
+      ],
+      "learning_focus": [
+        "Input mapping to physics",
+        "Collision and friction tuning",
+        "Level boundaries"
+      ],
+      "future_game_relevance": [
+        "sports games",
+        "physics puzzles",
+        "mobile flick games"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Traffic Light Timing",
+      "short_description": "Let cars pass by switching a traffic light, but avoid crashes and long waits.",
+      "core_mechanic": "Switch between two directions with a timed light.",
+      "gameplay_loop": "Cars approach from two roads, you switch light to let one side go, keep flow, score for safe passes.",
+      "win_conditions": "Reach 50 safe passes.",
+      "lose_conditions": "Cause 3 crashes or build a queue too long.",
+      "prototypes": [
+        {
+          "name": "Car Spawner",
+          "goal": "Spawn cars and move them along two lanes."
+        },
+        {
+          "name": "Traffic Light",
+          "goal": "Stop or release cars based on light state."
+        },
+        {
+          "name": "Crash Rules",
+          "goal": "Detect collisions in intersection and count crashes."
+        }
+      ],
+      "learning_focus": [
+        "Simple simulations",
+        "Queue management",
+        "Event based scoring"
+      ],
+      "future_game_relevance": [
+        "management games",
+        "city builders",
+        "simulation systems"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Maze Key Hunt",
+      "short_description": "Find keys in a small maze and unlock the exit while avoiding a slow chaser.",
+      "core_mechanic": "Collect keys and unlock doors.",
+      "gameplay_loop": "Explore maze, grab key, open door, avoid chaser, reach exit.",
+      "win_conditions": "Unlock the exit and escape.",
+      "lose_conditions": "Get caught by the chaser.",
+      "prototypes": [
+        {
+          "name": "Maze Movement",
+          "goal": "Top-down movement with wall collisions."
+        },
+        {
+          "name": "Key + Door",
+          "goal": "Pick up key and open a door that blocks the exit."
+        },
+        {
+          "name": "Simple Chaser",
+          "goal": "Enemy follows player with basic seek movement."
+        }
+      ],
+      "learning_focus": [
+        "Collectibles and inventory (tiny)",
+        "Doors and gating progress",
+        "Simple enemy AI"
+      ],
+      "future_game_relevance": [
+        "horror maze",
+        "adventure games",
+        "stealth chase"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Stack the Blocks",
+      "short_description": "Drop blocks to stack as high as possible with simple left-right movement.",
+      "core_mechanic": "Drop timing with alignment bonuses.",
+      "gameplay_loop": "Move block, drop it, trim overhang, stack higher, repeat until you miss too much.",
+      "win_conditions": "Reach a target height (or score).",
+      "lose_conditions": "A block is too small to land or falls off the stack.",
+      "prototypes": [
+        {
+          "name": "Drop and Land",
+          "goal": "Move a block side to side and drop it with gravity."
+        },
+        {
+          "name": "Trim Overhang",
+          "goal": "Cut off the overhanging part based on overlap."
+        },
+        {
+          "name": "Score and Fail",
+          "goal": "Score for perfect drops and end game when overlap is zero."
+        }
+      ],
+      "learning_focus": [
+        "Collision and overlap math",
+        "Arcade scoring rules",
+        "Camera follow basics"
+      ],
+      "future_game_relevance": [
+        "casual arcade",
+        "physics stacking",
+        "mobile games"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Fishing Line Tug",
+      "short_description": "A simple fishing mini game where you keep tension in the safe zone to catch fish.",
+      "core_mechanic": "Hold and release to keep a slider in a target range.",
+      "gameplay_loop": "Hook fish, manage tension meter, catch fish for points, repeat.",
+      "win_conditions": "Catch 5 fish.",
+      "lose_conditions": "Tension meter hits zero or max too many times (fish escapes).",
+      "prototypes": [
+        {
+          "name": "Tension Meter",
+          "goal": "Create a meter that rises when holding and falls when releasing."
+        },
+        {
+          "name": "Safe Zone",
+          "goal": "Add a target zone and detect if meter stays inside."
+        },
+        {
+          "name": "Catch Logic",
+          "goal": "Fill a progress bar while in zone, lose progress outside."
+        }
+      ],
+      "learning_focus": [
+        "UI meters and feedback",
+        "Simple mini game loops",
+        "Balancing difficulty"
+      ],
+      "future_game_relevance": [
+        "life sims",
+        "RPG mini games",
+        "timing based mechanics"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Enemy Wave Shooter",
+      "short_description": "A top-down shooter with one weapon, simple enemies, and a clear survival goal.",
+      "core_mechanic": "Move and shoot toward the cursor with a basic cooldown.",
+      "gameplay_loop": "Enemies spawn, you shoot and dodge, collect small health pickups, survive waves.",
+      "win_conditions": "Survive 3 minutes or clear 5 waves.",
+      "lose_conditions": "Health reaches zero.",
+      "prototypes": [
+        {
+          "name": "Move + Shoot",
+          "goal": "Implement movement and shooting with a cooldown."
+        },
+        {
+          "name": "Basic Enemy",
+          "goal": "Spawn enemies that move toward player and deal damage on touch."
+        },
+        {
+          "name": "Waves + Pickups",
+          "goal": "Add wave timer and occasional health pickups."
+        }
+      ],
+      "learning_focus": [
+        "Projectiles and cooldowns",
+        "Enemy behaviors",
+        "Health and pickups"
+      ],
+      "future_game_relevance": [
+        "shooters",
+        "survivor games",
+        "action RPGs"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Platform Switch Puzzle",
+      "short_description": "Toggle platforms on and off to create a path to the goal.",
+      "core_mechanic": "Switch that changes which platforms are solid.",
+      "gameplay_loop": "Jump and navigate, hit switches to toggle platforms, reach exit.",
+      "win_conditions": "Reach the exit.",
+      "lose_conditions": "Fall off screen or touch hazard spikes.",
+      "prototypes": [
+        {
+          "name": "Toggle Platforms",
+          "goal": "Enable and disable platform colliders with a switch."
+        },
+        {
+          "name": "Player Controller",
+          "goal": "Basic left-right movement and jump with coyote time optional."
+        },
+        {
+          "name": "Level Reset",
+          "goal": "Add hazards and a quick reset on death."
+        }
+      ],
+      "learning_focus": [
+        "Interactable objects",
+        "Simple puzzle design",
+        "Player controller basics"
+      ],
+      "future_game_relevance": [
+        "platformers",
+        "metroidvanias",
+        "puzzle action"
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Whack-a-Mole Garden",
+      "short_description": "Moles pop up from holes and you click them fast before they hide again.",
+      "core_mechanic": "Timed pop-up targets you must click.",
+      "gameplay_loop": "Moles appear, you click to score, misses reduce lives, speed increases over time.",
+      "win_conditions": "Score 30 points within 60 seconds.",
+      "lose_conditions": "Run out of lives from too many misses.",
+      "prototypes": [
+        {
+          "name": "Pop-Up Holes",
+          "goal": "Create a few holes that can show or hide a mole."
+        },
+        {
+          "name": "Click to Score",
+          "goal": "Detect clicks on visible moles and add points."
+        },
+        {
+          "name": "Speed Ramp",
+          "goal": "Reduce show time over time and add a timer plus lives."
+        }
+      ],
+      "learning_focus": [
+        "Timers and random selection",
+        "Click detection and feedback",
+        "Simple difficulty scaling"
+      ],
+      "future_game_relevance": [
+        "casual arcade",
+        "tap games",
+        "reaction mini games"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Catapult Target Practice",
+      "short_description": "Launch a projectile with angle and power to hit simple targets.",
+      "core_mechanic": "Adjust angle and power then fire.",
+      "gameplay_loop": "Aim, shoot, observe trajectory, adjust, hit targets in limited shots.",
+      "win_conditions": "Hit all targets within 10 shots.",
+      "lose_conditions": "Run out of shots.",
+      "prototypes": [
+        {
+          "name": "Projectile Launch",
+          "goal": "Launch a projectile with physics at a chosen angle and power."
+        },
+        {
+          "name": "Targets",
+          "goal": "Add simple targets that get destroyed on hit."
+        },
+        {
+          "name": "Shot Counter",
+          "goal": "Track shots and end level on win or fail."
+        }
+      ],
+      "learning_focus": [
+        "Projectile motion and tuning",
+        "Simple aiming UI",
+        "Level setup with targets"
+      ],
+      "future_game_relevance": [
+        "artillery games",
+        "physics puzzles",
+        "combat aiming"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Frogger Cross",
+      "short_description": "Cross a road and river with moving hazards to reach safe zones.",
+      "core_mechanic": "Grid step movement with moving obstacles.",
+      "gameplay_loop": "Step forward, avoid cars, ride logs, reach safe zone, repeat for multiple lanes.",
+      "win_conditions": "Reach 3 safe zones.",
+      "lose_conditions": "Get hit by car, fall into water, or timer runs out.",
+      "prototypes": [
+        {
+          "name": "Step Movement",
+          "goal": "Move player one tile per input with snap."
+        },
+        {
+          "name": "Lane Hazards",
+          "goal": "Spawn cars that move and wrap around the screen."
+        },
+        {
+          "name": "Water Logs",
+          "goal": "Add logs that carry player and a timer."
+        }
+      ],
+      "learning_focus": [
+        "Tile movement",
+        "Moving hazards",
+        "Timers and level progression"
+      ],
+      "future_game_relevance": [
+        "arcade classics",
+        "grid action",
+        "survival crossing games"
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Tiny Space Dock",
+      "short_description": "Gently dock a ship by controlling thrust and rotation without crashing.",
+      "core_mechanic": "Thrust and rotate with inertia.",
+      "gameplay_loop": "Approach slowly, align angle, reduce speed, dock inside the bay, proceed to next dock.",
+      "win_conditions": "Dock with speed under a safe threshold.",
+      "lose_conditions": "Crash into walls or dock too fast.",
+      "prototypes": [
+        {
+          "name": "Ship Controls",
+          "goal": "Implement thrust, rotation, and inertia."
+        },
+        {
+          "name": "Dock Zone",
+          "goal": "Detect docking when aligned and slow enough."
+        },
+        {
+          "name": "Crash Feedback",
+          "goal": "End run on collision and add restart."
+        }
+      ],
+      "learning_focus": [
+        "Inertia-based controls",
+        "Angle and speed checks",
+        "Tuning difficulty"
+      ],
+      "future_game_relevance": [
+        "space games",
+        "vehicle controls",
+        "precision physics"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Loot Avoider",
+      "short_description": "Collect gems while avoiding enemies, but carrying more makes you slower.",
+      "core_mechanic": "Speed decreases based on collected loot count.",
+      "gameplay_loop": "Grab gems, decide when to bank at a safe zone, risk getting caught while heavy.",
+      "win_conditions": "Bank 15 gems.",
+      "lose_conditions": "Get caught while carrying gems, lose all carried gems 3 times.",
+      "prototypes": [
+        {
+          "name": "Collect Gems",
+          "goal": "Pick up gems and increase a carried count."
+        },
+        {
+          "name": "Weight Slowdown",
+          "goal": "Reduce player speed based on carried count."
+        },
+        {
+          "name": "Banking",
+          "goal": "Add a safe zone that converts carried into saved gems."
+        }
+      ],
+      "learning_focus": [
+        "Risk reward loops",
+        "Variable movement tuning",
+        "Basic save vs carry economy"
+      ],
+      "future_game_relevance": [
+        "roguelites",
+        "extraction games",
+        "stealth collection"
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Breakout Remix",
+      "short_description": "Classic breakout with a paddle, bouncing ball, and bricks with simple powerups.",
+      "core_mechanic": "Reflect a ball with a paddle.",
+      "gameplay_loop": "Move paddle, keep ball in play, break bricks, grab occasional powerups.",
+      "win_conditions": "Break all bricks.",
+      "lose_conditions": "Lose 3 balls.",
+      "prototypes": [
+        {
+          "name": "Paddle + Ball",
+          "goal": "Implement paddle movement and ball bounce."
+        },
+        {
+          "name": "Brick Grid",
+          "goal": "Create bricks that break on hit and add score."
+        },
+        {
+          "name": "Powerup Drop",
+          "goal": "Randomly drop one powerup that changes paddle size."
+        }
+      ],
+      "learning_focus": [
+        "Collision response",
+        "Level layout and progression",
+        "Simple powerup systems"
+      ],
+      "future_game_relevance": [
+        "arcade games",
+        "powerup design",
+        "level-based action"
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Sliding Ice Puzzle",
+      "short_description": "Move on ice where you slide until hitting a wall, reach the goal tile.",
+      "core_mechanic": "Slide movement that continues until blocked.",
+      "gameplay_loop": "Choose direction, slide, stop on obstacles, plan route to reach goal.",
+      "win_conditions": "Reach the goal tile.",
+      "lose_conditions": "No lose state, but count moves for score.",
+      "prototypes": [
+        {
+          "name": "Slide Logic",
+          "goal": "Implement sliding movement that stops at walls."
+        },
+        {
+          "name": "Level Tiles",
+          "goal": "Create walls and goal tile using a simple grid map."
+        },
+        {
+          "name": "Move Counter",
+          "goal": "Count moves and show a reset button."
+        }
+      ],
+      "learning_focus": [
+        "Grid rules with continuous movement",
+        "Level representation",
+        "Puzzle iteration"
+      ],
+      "future_game_relevance": [
+        "puzzle games",
+        "turn-based movement",
+        "grid systems"
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Hook Swing Mini",
+      "short_description": "Swing from hooks to reach the exit, with simple momentum and detach timing.",
+      "core_mechanic": "Grapple to a point, swing, release.",
+      "gameplay_loop": "Shoot hook to anchor points, swing, release to gain distance, reach exit.",
+      "win_conditions": "Reach exit before falling.",
+      "lose_conditions": "Fall off screen or hit spikes.",
+      "prototypes": [
+        {
+          "name": "Grapple Attach",
+          "goal": "Attach to a point and draw a rope line."
+        },
+        {
+          "name": "Swing Physics",
+          "goal": "Use a joint or constraint to swing with momentum."
+        },
+        {
+          "name": "Release Timing",
+          "goal": "Release and keep velocity, add goal and reset."
+        }
+      ],
+      "learning_focus": [
+        "Joints and constraints",
+        "Momentum based movement",
+        "Fun movement tuning"
+      ],
+      "future_game_relevance": [
+        "platformers",
+        "physics movement games",
+        "action traversal"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Tiny Turn-Based Duel",
+      "short_description": "A simple turn-based fight: attack, defend, or heal with predictable enemy behavior.",
+      "core_mechanic": "Three-choice turn system with simple outcomes.",
+      "gameplay_loop": "Pick an action, resolve results, enemy picks action, repeat until someone loses.",
+      "win_conditions": "Enemy HP reaches zero.",
+      "lose_conditions": "Player HP reaches zero.",
+      "prototypes": [
+        {
+          "name": "Turn UI",
+          "goal": "Buttons for attack, defend, heal that apply effects."
+        },
+        {
+          "name": "Enemy AI",
+          "goal": "Enemy chooses actions on a simple pattern or random weights."
+        },
+        {
+          "name": "Results Screen",
+          "goal": "Add win and lose screens and restart."
+        }
+      ],
+      "learning_focus": [
+        "Turn sequencing",
+        "UI button logic",
+        "Balancing simple numbers"
+      ],
+      "future_game_relevance": [
+        "RPG combat",
+        "strategy games",
+        "card battlers"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Tile Painter",
+      "short_description": "Paint all tiles on a grid by moving, like a simple territory fill puzzle.",
+      "core_mechanic": "Walking paints tiles, avoid unpainted traps.",
+      "gameplay_loop": "Move across grid, paint tiles, plan path to cover everything efficiently.",
+      "win_conditions": "All tiles are painted.",
+      "lose_conditions": "Timer ends or you step on a hazard tile.",
+      "prototypes": [
+        {
+          "name": "Paint on Step",
+          "goal": "Change tile color when player steps on it."
+        },
+        {
+          "name": "Completion Check",
+          "goal": "Detect when all tiles are painted."
+        },
+        {
+          "name": "Timer or Hazards",
+          "goal": "Add a timer or a few hazard tiles to avoid."
+        }
+      ],
+      "learning_focus": [
+        "Grid tracking",
+        "Win condition checks",
+        "Simple level creation"
+      ],
+      "future_game_relevance": [
+        "puzzle games",
+        "territory games",
+        "level completion logic"
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Sentry Scanner",
+      "short_description": "Move through rooms, avoid rotating scanners, grab the data chip, escape.",
+      "core_mechanic": "Avoid rotating detection beams.",
+      "gameplay_loop": "Navigate rooms, time movement between scans, pick up chip, reach exit.",
+      "win_conditions": "Collect chip and reach exit.",
+      "lose_conditions": "Get scanned 3 times.",
+      "prototypes": [
+        {
+          "name": "Rotating Beam",
+          "goal": "Create a rotating line or cone that detects the player."
+        },
+        {
+          "name": "Room Layout",
+          "goal": "Build a simple room with walls and doors."
+        },
+        {
+          "name": "Objective Item",
+          "goal": "Add chip pickup and exit unlock."
+        }
+      ],
+      "learning_focus": [
+        "Detection mechanics",
+        "Level gating",
+        "Player feedback for fail states"
+      ],
+      "future_game_relevance": [
+        "stealth games",
+        "heist games",
+        "top-down adventure"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Bouncy Cannon",
+      "short_description": "Shoot a ball that bounces off walls to hit targets, like a simple ricochet puzzle.",
+      "core_mechanic": "One shot that bounces multiple times.",
+      "gameplay_loop": "Aim, shoot, watch bounces, hit all targets, retry if needed.",
+      "win_conditions": "Hit all targets in one shot (or up to 3 shots).",
+      "lose_conditions": "Run out of shots.",
+      "prototypes": [
+        {
+          "name": "Bounce Physics",
+          "goal": "Shoot a ball with high bounciness and predictable speed."
+        },
+        {
+          "name": "Targets",
+          "goal": "Add targets that break on hit."
+        },
+        {
+          "name": "Shot Limit",
+          "goal": "Limit shots and add restart."
+        }
+      ],
+      "learning_focus": [
+        "Physics materials and bounces",
+        "Aim previews and tuning",
+        "Puzzle level layout"
+      ],
+      "future_game_relevance": [
+        "puzzle shooters",
+        "physics puzzles",
+        "skill puzzles"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Elevator Escape",
+      "short_description": "Ride an elevator upward and dodge hazards on each floor with short choices.",
+      "core_mechanic": "Pick left or right at each floor to avoid a hazard.",
+      "gameplay_loop": "Elevator stops, hazard preview shows, choose lane, survive floors, score increases.",
+      "win_conditions": "Survive 20 floors.",
+      "lose_conditions": "Choose the wrong side and get hit 3 times.",
+      "prototypes": [
+        {
+          "name": "Floor Events",
+          "goal": "Create a repeating floor stop cycle with a choice timer."
+        },
+        {
+          "name": "Hazard Spawns",
+          "goal": "Spawn one hazard pattern per floor and show a warning."
+        },
+        {
+          "name": "Hit Counter",
+          "goal": "Track hits and end game on 3."
+        }
+      ],
+      "learning_focus": [
+        "Event scheduling",
+        "Telegraphing danger",
+        "Simple random pattern selection"
+      ],
+      "future_game_relevance": [
+        "endless games",
+        "reaction games",
+        "pattern learning"
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Tiny Cooking Queue",
+      "short_description": "Cook simple orders in order: tap to start cooking, tap to serve before it burns.",
+      "core_mechanic": "Orders queue with timers per item.",
+      "gameplay_loop": "New orders arrive, start cooking, watch timers, serve at the right time, earn coins.",
+      "win_conditions": "Serve 15 orders with at least 12 correct.",
+      "lose_conditions": "Too many burned or missed orders.",
+      "prototypes": [
+        {
+          "name": "Order Queue",
+          "goal": "Spawn simple orders with icons and a countdown timer."
+        },
+        {
+          "name": "Cook Timer",
+          "goal": "Start cooking on click and progress to ready and burned."
+        },
+        {
+          "name": "Serve Check",
+          "goal": "Serve at ready state for points, penalize burned."
+        }
+      ],
+      "learning_focus": [
+        "Queues and timers",
+        "UI lists",
+        "Simple scoring and penalties"
+      ],
+      "future_game_relevance": [
+        "time management games",
+        "simulation games",
+        "UI systems"
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Dodging Dash Arena",
+      "short_description": "Survive by dashing through gaps between slow projectiles.",
+      "core_mechanic": "Short dash with cooldown and invulnerability window.",
+      "gameplay_loop": "Projectiles spawn, you dodge and dash, survive to increase score, difficulty ramps.",
+      "win_conditions": "Survive 90 seconds.",
+      "lose_conditions": "Get hit 3 times.",
+      "prototypes": [
+        {
+          "name": "Dash Move",
+          "goal": "Implement dash with cooldown and quick movement burst."
+        },
+        {
+          "name": "Projectile Patterns",
+          "goal": "Spawn slow bullets in simple patterns."
+        },
+        {
+          "name": "Hit and I-Frames",
+          "goal": "Add hit counter and short invulnerability after hit."
+        }
+      ],
+      "learning_focus": [
+        "Cooldowns and movement abilities",
+        "Pattern spawning",
+        "Invulnerability and feedback"
+      ],
+      "future_game_relevance": [
+        "bullet hell",
+        "action roguelites",
+        "combat movement"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Balloon Rescue",
+      "short_description": "Carry a balloon to the goal, but it rises so you must manage weight pickups.",
+      "core_mechanic": "Balloon buoyancy plus add and remove weight.",
+      "gameplay_loop": "Move to weights, attach to control height, avoid spikes, reach goal platform.",
+      "win_conditions": "Reach the goal platform and keep balloon intact.",
+      "lose_conditions": "Balloon hits spikes or drifts off screen.",
+      "prototypes": [
+        {
+          "name": "Buoyancy",
+          "goal": "Make balloon rise with a constant upward force."
+        },
+        {
+          "name": "Weights",
+          "goal": "Pick up weight items that reduce upward force."
+        },
+        {
+          "name": "Hazards",
+          "goal": "Add spikes and goal platform detection."
+        }
+      ],
+      "learning_focus": [
+        "Forces and tuning",
+        "Pickup effects",
+        "Hazards and goal detection"
+      ],
+      "future_game_relevance": [
+        "physics platformers",
+        "puzzle platformers",
+        "movement design"
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Tiny Snake Garden",
+      "short_description": "A beginner snake game with simple food, walls, and speed increase.",
+      "core_mechanic": "Move in grid, grow on food.",
+      "gameplay_loop": "Move, eat, grow, avoid collisions, aim for a length goal.",
+      "win_conditions": "Reach length 20.",
+      "lose_conditions": "Hit wall or yourself.",
+      "prototypes": [
+        {
+          "name": "Grid Movement",
+          "goal": "Move on a grid and prevent reversing direction."
+        },
+        {
+          "name": "Food Spawn",
+          "goal": "Spawn food on empty tiles and grow on eat."
+        },
+        {
+          "name": "Collision Lose",
+          "goal": "Detect self and wall collision and restart."
+        }
+      ],
+      "learning_focus": [
+        "Grid logic",
+        "Spawning without overlap",
+        "Simple difficulty scaling"
+      ],
+      "future_game_relevance": [
+        "arcade classics",
+        "grid action",
+        "procedural placement"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Tic Tac Toe Plus",
+      "short_description": "Classic tic tac toe with a simple CPU and a quick rematch loop.",
+      "core_mechanic": "Place marks on a 3x3 grid and detect 3 in a row.",
+      "gameplay_loop": "Player places a mark, CPU places a mark, check win or draw, rematch quickly.",
+      "win_conditions": "Get 3 in a row before the CPU.",
+      "lose_conditions": "CPU gets 3 in a row first.",
+      "prototypes": [
+        {
+          "name": "3x3 Grid UI",
+          "goal": "Clickable cells that place X or O."
+        },
+        {
+          "name": "Win Check",
+          "goal": "Detect win lines and draws."
+        },
+        {
+          "name": "Simple CPU",
+          "goal": "CPU picks a random empty cell (optionally block obvious wins)."
+        }
+      ],
+      "learning_focus": [
+        "Turn-based input flow",
+        "Basic win condition logic",
+        "UI state and reset"
+      ],
+      "future_game_relevance": [
+        "board games",
+        "turn-based games",
+        "menu and UI driven games"
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Shadow Platform",
+      "short_description": "Platforms only exist when you stand in light, so you move between lamps.",
+      "core_mechanic": "Light zones toggle platform solidity.",
+      "gameplay_loop": "Move to light source, platforms appear, jump across, reach next light, repeat to exit.",
+      "win_conditions": "Reach exit.",
+      "lose_conditions": "Fall into the void.",
+      "prototypes": [
+        {
+          "name": "Light Zones",
+          "goal": "Create circular zones that the player can enter and exit."
+        },
+        {
+          "name": "Platform Toggle",
+          "goal": "Enable platforms when inside light zone."
+        },
+        {
+          "name": "Simple Level",
+          "goal": "Build a small level with 3 light zones and an exit."
+        }
+      ],
+      "learning_focus": [
+        "Area-based rules",
+        "Clear visual communication",
+        "Platformer level design"
+      ],
+      "future_game_relevance": [
+        "puzzle platformers",
+        "metroidvanias",
+        "light and shadow mechanics"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Tiny Inventory Craft",
+      "short_description": "Collect two resources and craft a key to open the exit.",
+      "core_mechanic": "Combine items into a crafted output.",
+      "gameplay_loop": "Collect wood and metal, craft a key at a bench, open door, escape.",
+      "win_conditions": "Craft key and reach exit.",
+      "lose_conditions": "Timer runs out (optional) or get hit by a roaming hazard 3 times.",
+      "prototypes": [
+        {
+          "name": "Collect Resources",
+          "goal": "Pick up resource items and show counts."
+        },
+        {
+          "name": "Craft Bench",
+          "goal": "Convert resources into a key when requirements met."
+        },
+        {
+          "name": "Locked Door",
+          "goal": "Door opens only if you have the key, then win."
+        }
+      ],
+      "learning_focus": [
+        "Inventory counters",
+        "Crafting recipes",
+        "Progress gating"
+      ],
+      "future_game_relevance": [
+        "survival games",
+        "RPG crafting",
+        "quest progression"
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Quick Draw Duel",
+      "short_description": "React to a signal, draw and shoot faster than the opponent.",
+      "core_mechanic": "Reaction-time input window.",
+      "gameplay_loop": "Wait for signal, press shoot quickly, win or lose round, best of 5.",
+      "win_conditions": "Win 3 rounds.",
+      "lose_conditions": "Lose 3 rounds.",
+      "prototypes": [
+        {
+          "name": "Random Signal",
+          "goal": "Signal appears after a random delay."
+        },
+        {
+          "name": "Reaction Measure",
+          "goal": "Measure time between signal and input."
+        },
+        {
+          "name": "Best of 5",
+          "goal": "Track rounds and show match results screen."
+        }
+      ],
+      "learning_focus": [
+        "Timing and randomness",
+        "Simple AI opponent baselines",
+        "Round-based structure"
+      ],
+      "future_game_relevance": [
+        "competitive mini games",
+        "reaction games",
+        "quick time events"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Water Pipe Connect",
+      "short_description": "Rotate pipe tiles to connect water from start to finish.",
+      "core_mechanic": "Rotate tiles to connect paths.",
+      "gameplay_loop": "Rotate tiles, test water flow, adjust until connected, then proceed.",
+      "win_conditions": "Connected path from source to sink.",
+      "lose_conditions": "No lose state, but move limit optional.",
+      "prototypes": [
+        {
+          "name": "Pipe Tiles",
+          "goal": "Create tiles with 2 to 4 openings and rotate on click."
+        },
+        {
+          "name": "Flow Check",
+          "goal": "Check connectivity from source to sink."
+        },
+        {
+          "name": "Level Data",
+          "goal": "Load a small level layout from an array or text map."
+        }
+      ],
+      "learning_focus": [
+        "Grid connectivity logic",
+        "Rotation and snapping",
+        "Level representation"
+      ],
+      "future_game_relevance": [
+        "puzzle games",
+        "network building",
+        "logic and pathfinding"
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Cave Miner Dig",
+      "short_description": "Dig down in a grid, collect gems, avoid rocks, and return to the top.",
+      "core_mechanic": "Remove tiles to move, limited energy.",
+      "gameplay_loop": "Dig tiles, collect gems, manage energy, return to base to win.",
+      "win_conditions": "Collect 10 gems and return to start.",
+      "lose_conditions": "Energy reaches zero while underground.",
+      "prototypes": [
+        {
+          "name": "Dig Tiles",
+          "goal": "Click or press to remove a tile in front and move into it."
+        },
+        {
+          "name": "Energy",
+          "goal": "Spend energy per dig and show UI."
+        },
+        {
+          "name": "Return Objective",
+          "goal": "Win only when gems collected and back at start."
+        }
+      ],
+      "learning_focus": [
+        "Tile destruction and updates",
+        "Resource management",
+        "Objective tracking"
+      ],
+      "future_game_relevance": [
+        "mining games",
+        "survival loops",
+        "roguelite exploration"
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Lane Change Racer",
+      "short_description": "A top-down endless racer where you change lanes to avoid traffic.",
+      "core_mechanic": "Instant lane switching with cooldown.",
+      "gameplay_loop": "Road scrolls, cars spawn, switch lanes to avoid, score increases with distance.",
+      "win_conditions": "Reach a target distance.",
+      "lose_conditions": "Crash into another car.",
+      "prototypes": [
+        {
+          "name": "Lane Switch",
+          "goal": "Move player between 3 lanes with quick snaps."
+        },
+        {
+          "name": "Traffic Spawn",
+          "goal": "Spawn cars in lanes with varying speeds."
+        },
+        {
+          "name": "Distance Score",
+          "goal": "Track distance and end on crash."
+        }
+      ],
+      "learning_focus": [
+        "Endless scrolling illusion",
+        "Obstacle spawning and difficulty",
+        "Simple hit detection"
+      ],
+      "future_game_relevance": [
+        "endless runners",
+        "mobile arcade",
+        "racing games"
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Puzzle Button Doors",
+      "short_description": "Press floor buttons to open doors and reach the exit, with simple timing and order.",
+      "core_mechanic": "Buttons change door states.",
+      "gameplay_loop": "Explore small room, press buttons to open doors, avoid traps, reach exit.",
+      "win_conditions": "Reach exit door while it is open.",
+      "lose_conditions": "Touch a trap or get stuck and reset.",
+      "prototypes": [
+        {
+          "name": "Buttons + Doors",
+          "goal": "Press a button to open a door for a short time."
+        },
+        {
+          "name": "Multiple Buttons",
+          "goal": "Add two buttons that control different doors."
+        },
+        {
+          "name": "Trap Tiles",
+          "goal": "Add one trap type and a quick reset on hit."
+        }
+      ],
+      "learning_focus": [
+        "Event driven interactions",
+        "Timers and sequences",
+        "Basic puzzle design"
+      ],
+      "future_game_relevance": [
+        "dungeon puzzles",
+        "adventure games",
+        "escape rooms"
+      ]
+    }
+  ]
+}
