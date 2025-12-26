@@ -52,6 +52,15 @@ const renderFilters = categories => {
 
 const renderCards = (sites, categoryData) => {
   const cards = [];
+  const bannerMap = {
+    kenney: '../assets/assetWebsites/KennyBanner.png',
+    opengameart: '../assets/assetWebsites/Opengameart-logo.jpg',
+    pixabay: '../assets/assetWebsites/Pixabay-logo.svg.png',
+    freesound: '../assets/assetWebsites/Freesound_project_website_logo.png',
+    sonniss_gdc: '../assets/assetWebsites/Sonniss GameAudioGD.png',
+    zapsplat: '../assets/assetWebsites/zapsplat_logo_share.png',
+  };
+
   Object.entries(sites).forEach(([siteId, site]) => {
     const categoryEntries = categoryData.siteCategories[siteId];
     const categories = categoryEntries ? Array.from(categoryEntries.values()) : [];
@@ -69,8 +78,16 @@ const renderCards = (sites, categoryData) => {
     const image = document.createElement('div');
     image.className = 'asset-image';
     image.setAttribute('aria-hidden', 'true');
-    // Using simple placeholder logic; in a real app, map site.name to an image file
-    image.innerHTML = '<span>Image</span>';
+    const bannerSrc = bannerMap[siteId];
+
+    if (bannerSrc) {
+      const img = document.createElement('img');
+      img.src = bannerSrc;
+      img.alt = `${site.name} banner`;
+      image.appendChild(img);
+    } else {
+      image.innerHTML = '<span>Image</span>';
+    }
 
     const body = document.createElement('div');
     body.className = 'asset-card-body';

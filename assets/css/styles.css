@@ -748,6 +748,13 @@ textarea {
   letter-spacing: 0.02em;
 }
 
+.asset-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
 .asset-card-body {
   display: grid;
   gap: 12px;
