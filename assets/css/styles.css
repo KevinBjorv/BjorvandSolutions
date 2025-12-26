@@ -52,9 +52,17 @@ header {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text);
+}
+
+.logo img {
+  height: 34px;
+  width: auto;
 }
 
 nav {
@@ -214,6 +222,7 @@ p {
   gap: 24px;
   align-items: center;
 }
+
 
 .card {
   background: var(--card);
@@ -662,51 +671,6 @@ textarea {
   resize: vertical;
 }
 
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.app-card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.app-card ul {
-  margin: 0;
-  padding-left: 18px;
-  color: var(--muted);
-}
-
-.app-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--accent-light);
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.app-layout {
-  display: grid;
-  grid-template-columns: minmax(200px, 1fr);
-  gap: 16px;
-}
 
 .asset-hero {
   display: grid;
