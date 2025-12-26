@@ -115,6 +115,15 @@
       color: var(--muted);
       margin-top: 16px;
     }
+
+    body.timer-fullscreen header,
+    body.timer-fullscreen footer {
+      display: none;
+    }
+
+    body.timer-fullscreen main {
+      padding: 24px 18px 32px;
+    }
   </style>
 </head>
 <body>
@@ -193,6 +202,7 @@
     const statusText = document.getElementById('timerStatus');
     const completionSound = document.getElementById('completionSound');
     const durationButtons = Array.from(document.querySelectorAll('[data-minutes]'));
+    const timerShell = document.querySelector('.timer-shell');
 
     let selectedMinutes = 60;
     let remainingSeconds = selectedMinutes * 60;
@@ -284,17 +294,15 @@
     });
 
     const updateFullScreenButton = () => {
-      if (document.fullscreenElement) {
-        fullScreenButton.textContent = 'Exit full screen';
-        return;
-      }
-      fullScreenButton.textContent = 'Full screen';
+      const isFullScreen = Boolean(document.fullscreenElement);
+      fullScreenButton.textContent = isFullScreen ? 'Exit full screen' : 'Full screen';
+      document.body.classList.toggle('timer-fullscreen', isFullScreen);
     };
 
     fullScreenButton.addEventListener('click', async () => {
       if (!document.fullscreenElement) {
         try {
-          await document.documentElement.requestFullscreen();
+          await timerShell.requestFullscreen();
         } catch (error) {
           console.error('Unable to enter full screen.', error);
         }
