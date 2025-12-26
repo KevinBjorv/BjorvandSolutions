@@ -52,9 +52,17 @@ header {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text);
+}
+
+.logo img {
+  height: 34px;
+  width: auto;
 }
 
 nav {
