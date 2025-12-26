@@ -77,7 +77,7 @@
       justify-content: center;
     }
 
-    .timer-shell .button {
+    .button {
       border: 1px solid var(--border);
       background: transparent;
       color: var(--text);
@@ -88,23 +88,23 @@
       transition: transform var(--transition), background var(--transition), color var(--transition);
     }
 
-    .timer-shell .button:hover {
+    .button:hover {
       transform: translateY(-1px);
     }
 
-    .timer-shell .button.primary {
+    .button.primary {
       background: var(--accent);
       color: #0e1116;
       border-color: transparent;
     }
 
-    .timer-shell .button.ghost {
+    .button.ghost {
       background: var(--accent-light);
       color: var(--accent);
       border-color: transparent;
     }
 
-    .timer-shell .button[disabled] {
+    .button[disabled] {
       opacity: 0.6;
       cursor: not-allowed;
       transform: none;
@@ -118,30 +118,6 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-container">
-      <a class="logo" href="../index.html">Bjorvand Solutions</a>
-      <nav aria-label="Smart Indie Apps">
-        <div class="nav-links">
-          <a href="index.html">Apps Hub</a>
-          <a href="asset-websites.html">Asset Websites</a>
-          <a href="deep-work-timer.html">Deep Work Timer</a>
-          <a href="game-idea-generator.html">Game Idea Generator</a>
-        </div>
-      </nav>
-      <div class="nav-actions">
-        <a class="button ghost" href="../index.html">Main site</a>
-        <button class="burger" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">Apps Hub</a>
-      <a href="asset-websites.html">Asset Websites</a>
-      <a href="deep-work-timer.html">Deep Work Timer</a>
-      <a href="game-idea-generator.html">Game Idea Generator</a>
-      <a href="../index.html">Main site</a>
-    </div>
-  </header>
   <main>
     <section class="timer-shell" aria-labelledby="timer-title">
       <h1 id="timer-title">Deep Work Timer</h1>
@@ -169,20 +145,6 @@
       <audio id="completionSound" preload="auto" src="../assets/audio/smooth-completed-notify-starting-alert-274739.mp3"></audio>
     </section>
   </main>
-
-  <footer>
-    <div class="footer-content">
-      <div>© Bjorvand Solutions 2025 • Org nr 836135652</div>
-      <div class="footer-links">
-        <a href="index.html">Apps Hub</a>
-        <a href="asset-websites.html">Asset Websites</a>
-        <a href="deep-work-timer.html">Deep Work Timer</a>
-        <a href="game-idea-generator.html">Game Idea Generator</a>
-        <a href="../index.html">Main site</a>
-      </div>
-      <div>kevin@smartindie.dev</div>
-    </div>
-  </footer>
 
   <script>
     const display = document.getElementById('timerDisplay');
