@@ -35,7 +35,7 @@ const bannerMap = {
   texturecan: 'textureCanBanner.png',
   textures_com: 'TexturesComBanner.png',
   unity_asset_store: 'UnityassetStoreBanner.png',
-  youtube_audio_library: 'Screenshot 2025-12-27 152137.png',
+  youtube_audio_library: 'YoutubeAudioLibaryBanner.png',
   zapsplat: 'ZapSplatBanner.png',
   ccmixter: 'mixterbanner.png',
   poly_haven_models: 'PolyhavenBanner.png'
