@@ -87,12 +87,27 @@
 .app-banner {
   height: 140px;
   background: linear-gradient(120deg, rgba(253, 129, 20, 0.1), rgba(98, 133, 255, 0.12));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--muted);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   letter-spacing: 0.02em;
+}
+
+.app-banner.deep-work {
+  background: linear-gradient(120deg, rgba(253, 129, 20, 0.1), rgba(98, 133, 255, 0.12)), url('../images/banners/DeepWorkTimerBanner.jpg');
+}
+
+.app-banner.game-idea {
+  background: linear-gradient(120deg, rgba(253, 129, 20, 0.1), rgba(98, 133, 255, 0.12)), url('../images/banners/IdeaGeneratorBanner.jpg');
+}
+
+.app-banner.forum-search {
+  background: linear-gradient(120deg, rgba(253, 129, 20, 0.1), rgba(98, 133, 255, 0.12)), url('../images/banners/ForumSearchBanner.jpg');
 }
 
 .app-meta {
