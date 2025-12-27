@@ -3,6 +3,44 @@ const grid = document.getElementById('assetGrid');
 const count = document.getElementById('assetCount');
 const emptyState = document.getElementById('assetEmpty');
 
+const bannerMap = {
+  '3dtextures_me': '3dTexturesBanner.png',
+  ambientcg: 'AmbientCGBanner.png',
+  cgbookcase: 'CGBookcaseBanner.png',
+  craftpix: 'CraftPixNetBanner.png',
+  flaticon: 'FlatIconBanner.png',
+  font_awesome: 'FontAwesomeBanner.png',
+  free_music_archive: 'FreeMusicArchiveBanner.png',
+  freesound: 'FreeSoundBanner.png',
+  game_icons_net: 'GameIconsNetBanner.png',
+  heroicons: 'HeroIconsBanner.png',
+  itchio_cc0: 'ItchioBanner.png',
+  incompetech: 'incompetechBanner.png',
+  kaylousberg: 'KaylousbergBanner.png',
+  kenney: 'KennyBanner.png',
+  material_icons: 'GoogleFontsIconBanner.png',
+  mixamo: 'MixamoBanner.png',
+  opengameart: 'OpengameArtBanner.png',
+  openclipart: 'OpenclipArtBanner.png',
+  openverse: 'OpenverseBanner.png',
+  pixabay: 'PixabayBanenr.png',
+  poly_haven: 'PolyhavenBanner.png',
+  polypizza: 'PolyPizzaBanne.png',
+  quaternius: 'QuaterniusBanner.png',
+  sharetextures: 'ShareTexturesBanner.png',
+  sketchfab: 'SketchFabBanner.png',
+  sonnisse_gdc: 'SonnissBanner.png',
+  sonniss_gdc: 'SonnissBanner.png',
+  svgrepo: 'SVGRepoBanner.png',
+  texturecan: 'textureCanBanner.png',
+  textures_com: 'TexturesComBanner.png',
+  unity_asset_store: 'UnityassetStoreBanner.png',
+  youtube_audio_library: 'YoutubeAudioLibaryBanner.png',
+  zapsplat: 'ZapSplatBanner.png',
+  ccmixter: 'mixterbanner.png',
+  poly_haven_models: 'PolyhavenBanner.png'
+};
+
 const formatLabel = value =>
   value
     .replace(/_/g, ' ')
@@ -69,8 +107,30 @@ const renderCards = (sites, categoryData) => {
     const image = document.createElement('div');
     image.className = 'asset-image';
     image.setAttribute('aria-hidden', 'true');
-    // Using simple placeholder logic; in a real app, map site.name to an image file
-    image.innerHTML = '<span>Image</span>';
+
+    const bannerFile = bannerMap[siteId];
+    if (bannerFile) {
+      image.classList.add('has-banner');
+      image.style.setProperty(
+        '--banner-image',
+        `url('../assets/assetWebsites/${bannerFile}')`
+      );
+
+      const bannerImg = document.createElement('img');
+      bannerImg.className = 'asset-banner-image';
+      bannerImg.src = `../assets/assetWebsites/${bannerFile}`;
+      bannerImg.alt = `${site.name} banner`;
+      image.appendChild(bannerImg);
+
+      const label = document.createElement('div');
+      label.className = 'asset-image-label';
+      label.textContent = site.name;
+      image.appendChild(label);
+    } else {
+      const placeholder = document.createElement('span');
+      placeholder.textContent = site.name;
+      image.appendChild(placeholder);
+    }
 
     const body = document.createElement('div');
     body.className = 'asset-card-body';
