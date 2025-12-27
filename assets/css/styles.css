@@ -168,6 +168,41 @@ section {
   padding: 60px 0;
 }
 
+.section-offset-sm {
+  margin-top: 40px;
+}
+
+.section-offset {
+  margin-top: 50px;
+}
+
+.section-offset-lg {
+  margin-top: 60px;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 14px 0 8px;
+}
+
+.cta-note {
+  margin: 2px 0 14px;
+}
+
+.section-cta {
+  margin-top: 16px;
+}
+
+.section-cta-wide {
+  margin-top: 18px;
+}
+
+.muted-text {
+  color: var(--muted);
+}
+
 h1,
 h2,
 h3,
@@ -462,6 +497,14 @@ p {
   gap: 12px;
   align-items: flex-start;
   box-shadow: var(--shadow);
+}
+
+.cta-strip-heading {
+  margin: 0 0 6px;
+}
+
+.cta-strip-text {
+  margin: 0;
 }
 
 .game-grid {
