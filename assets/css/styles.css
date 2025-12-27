@@ -746,6 +746,44 @@ textarea {
   color: var(--text);
   font-weight: 700;
   letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+}
+
+.asset-image.has-banner {
+  background: none;
+}
+
+.asset-image.has-banner::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background-image: var(--banner-image);
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px);
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.asset-image.has-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45));
+}
+
+.asset-image-label {
+  position: relative;
+  z-index: 1;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f6f7f9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  font-weight: 800;
+  letter-spacing: 0.03em;
 }
 
 .asset-card-body {
