@@ -3,6 +3,15 @@ const grid = document.getElementById('assetGrid');
 const count = document.getElementById('assetCount');
 const emptyState = document.getElementById('assetEmpty');
 
+const siteBanners = {
+  kenney: '../assets/assetWebsites/KennyBanner.png',
+  opengameart: '../assets/assetWebsites/Opengameart-logo.jpg',
+  pixabay: '../assets/assetWebsites/Pixabay-logo.svg.png',
+  freesound: '../assets/assetWebsites/Freesound_project_website_logo.png',
+  sonniss_gdc: '../assets/assetWebsites/Sonniss GameAudioGD.png',
+  zapsplat: '../assets/assetWebsites/zapsplat_logo_share.png',
+};
+
 const formatLabel = value =>
   value
     .replace(/_/g, ' ')
@@ -69,8 +78,20 @@ const renderCards = (sites, categoryData) => {
     const image = document.createElement('div');
     image.className = 'asset-image';
     image.setAttribute('aria-hidden', 'true');
-    // Using simple placeholder logic; in a real app, map site.name to an image file
-    image.innerHTML = '<span>Image</span>';
+    const bannerPath = siteBanners[siteId];
+    if (bannerPath) {
+      const banner = document.createElement('img');
+      banner.src = bannerPath;
+      banner.alt = `${site.name} banner`;
+      banner.loading = 'lazy';
+      banner.className = 'asset-banner';
+      image.appendChild(banner);
+    }
+
+    const placeholder = document.createElement('span');
+    placeholder.className = 'asset-placeholder';
+    placeholder.textContent = bannerPath ? site.name : 'Image';
+    image.appendChild(placeholder);
 
     const body = document.createElement('div');
     body.className = 'asset-card-body';
