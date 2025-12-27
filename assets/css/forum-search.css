@@ -1,0 +1,29 @@
+/* Forum Search page tweaks */
+
+.forum-search .group-header h2 {
+  margin-bottom: 6px;
+}
+
+.forum-search .group-header .muted {
+  margin: 0;
+}
+
+.forum-search .circle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  overflow: hidden;
+}
+
+.forum-search .circle-icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  border-radius: 10px;
+}

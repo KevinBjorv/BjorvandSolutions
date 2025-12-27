@@ -1,0 +1,14 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stack Overflow logo">
+  <defs>
+    <linearGradient id="soGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbae40" />
+      <stop offset="100%" stop-color="#f37021" />
+    </linearGradient>
+  </defs>
+  <rect x="20" y="80" width="88" height="16" fill="#2f2f2f" rx="4" />
+  <rect x="32" y="64" width="16" height="32" fill="#2f2f2f" rx="4" />
+  <rect x="52" y="60" width="52" height="8" fill="url(#soGradient)" rx="4" transform="rotate(-10 78 64)" />
+  <rect x="56" y="48" width="52" height="8" fill="url(#soGradient)" rx="4" transform="rotate(-24 82 52)" />
+  <rect x="64" y="36" width="48" height="8" fill="url(#soGradient)" rx="4" transform="rotate(-36 88 40)" />
+  <rect x="68" y="24" width="40" height="8" fill="url(#soGradient)" rx="4" transform="rotate(-50 88 28)" />
+</svg>

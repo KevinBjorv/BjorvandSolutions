@@ -11,6 +11,7 @@
   <link rel="icon" href="../assets/favicon/favicon.ico">
   <link rel="manifest" href="../assets/favicon/site.webmanifest">
   <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/forum-search.css">
 </head>
 <body>
   <header>
@@ -59,34 +60,41 @@
       <div class="card search-groups">
         <div class="resource-group">
           <div class="group-header">
-            <p class="pill subtle">Communities</p>
             <h2>Threaded discussions</h2>
             <p class="muted">Scan real troubleshooting threads without tutorial noise.</p>
           </div>
           <div class="resource-grid">
             <a class="resource-chip" data-domain="reddit.com/r/gamedev" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">R</span>
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/Reddit_Icon_FullColor_Bleed.png" alt="" loading="lazy">
+              </span>
               <div class="resource-text">
                 <strong>Reddit</strong>
                 <p class="muted">Search r/gamedev and related subreddits.</p>
               </div>
             </a>
             <a class="resource-chip" data-domain="stackoverflow.com" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">S</span>
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/StackOverflowLogo.svg" alt="" loading="lazy">
+              </span>
               <div class="resource-text">
                 <strong>Stack Overflow</strong>
                 <p class="muted">Target practical code fixes from developers.</p>
               </div>
             </a>
             <a class="resource-chip" data-domain="gamedev.stackexchange.com" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">G</span>
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/GamedevstackexhangeLogo.jpg" alt="" loading="lazy">
+              </span>
               <div class="resource-text">
                 <strong>GameDev StackExchange</strong>
                 <p class="muted">Jump to concise, vetted answers.</p>
               </div>
             </a>
             <a class="resource-chip" data-domain="gamedev.net" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">D</span>
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/GamedevnetForumLogo.jpg" alt="" loading="lazy">
+              </span>
               <div class="resource-text">
                 <strong>GameDev.net Forums</strong>
                 <p class="muted">Browse long-form community breakdowns.</p>
@@ -97,30 +105,35 @@
 
         <div class="resource-group">
           <div class="group-header">
-            <p class="pill subtle">Engine help</p>
             <h2>Official discussions</h2>
             <p class="muted">Pick the right forum for your engine instead of searching all three.</p>
           </div>
           <div class="resource-grid">
             <a class="resource-chip" data-domain="discussions.unity.com" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">U</span>
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/UnityLogo.png" alt="" loading="lazy">
+              </span>
               <div class="resource-text">
                 <strong>Unity Discussions</strong>
                 <p class="muted">Unity Q&A and workflows.</p>
               </div>
             </a>
-            <a class="resource-chip" data-domain="forum.godotengine.org" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">G</span>
-              <div class="resource-text">
-                <strong>Godot Forums</strong>
-                <p class="muted">Community-backed Godot answers.</p>
-              </div>
-            </a>
             <a class="resource-chip" data-domain="forums.unrealengine.com" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">U</span>
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/UnrealEngineLogo.jpg" alt="" loading="lazy">
+              </span>
               <div class="resource-text">
                 <strong>Unreal Forums</strong>
                 <p class="muted">Blueprint and C++ troubleshooting.</p>
+              </div>
+            </a>
+            <a class="resource-chip" data-domain="forum.godotengine.org" target="_blank" rel="noopener noreferrer">
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/GodotLogo.jpg" alt="" loading="lazy">
+              </span>
+              <div class="resource-text">
+                <strong>Godot Forums</strong>
+                <p class="muted">Community-backed Godot answers.</p>
               </div>
             </a>
           </div>
@@ -128,27 +141,32 @@
 
         <div class="resource-group">
           <div class="group-header">
-            <p class="pill subtle">Official docs</p>
             <h2>API references</h2>
             <p class="muted">Search the docs directly if you need authoritative references.</p>
           </div>
           <div class="resource-grid">
-            <a class="resource-chip" data-domain="docs.unity.com" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">U</span>
+            <a class="resource-chip" data-domain="docs.unity3d.com" target="_blank" rel="noopener noreferrer">
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/UnityLogo.png" alt="" loading="lazy">
+              </span>
               <div class="resource-text">
                 <strong>Unity Docs</strong>
                 <p class="muted">Manual and scripting reference.</p>
               </div>
             </a>
             <a class="resource-chip" data-domain="docs.unrealengine.com" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">U</span>
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/UnrealEngineLogo.jpg" alt="" loading="lazy">
+              </span>
               <div class="resource-text">
                 <strong>Unreal Docs</strong>
                 <p class="muted">Blueprint and API guides.</p>
               </div>
             </a>
             <a class="resource-chip" data-domain="docs.godotengine.org" target="_blank" rel="noopener noreferrer">
-              <span class="circle-icon" aria-hidden="true">G</span>
+              <span class="circle-icon" aria-hidden="true">
+                <img src="../assets/images/logos/GodotLogo.jpg" alt="" loading="lazy">
+              </span>
               <div class="resource-text">
                 <strong>Godot Docs</strong>
                 <p class="muted">Class references and tutorials.</p>
