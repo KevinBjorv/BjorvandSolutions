@@ -116,6 +116,12 @@ const renderCards = (sites, categoryData) => {
         `url('../assets/assetWebsites/${bannerFile}')`
       );
 
+      const bannerImg = document.createElement('img');
+      bannerImg.className = 'asset-banner-image';
+      bannerImg.src = `../assets/assetWebsites/${bannerFile}`;
+      bannerImg.alt = `${site.name} banner`;
+      image.appendChild(bannerImg);
+
       const label = document.createElement('div');
       label.className = 'asset-image-label';
       label.textContent = site.name;
