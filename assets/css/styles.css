@@ -879,7 +879,7 @@ textarea {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: transparent;
+  background: var(--bg);
 }
 
 .email-page main {
