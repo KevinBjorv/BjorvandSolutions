@@ -875,6 +875,67 @@ textarea {
   background: rgba(255, 255, 255, 0.02);
 }
 
+.email-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.04), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.05), transparent 45%),
+    var(--background);
+}
+
+.email-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.email-card {
+  width: min(720px, 100%);
+  padding: 28px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.email-card h1 {
+  margin: 0;
+}
+
+.email-card .hero-sub {
+  margin: 0 0 6px;
+}
+
+.email-form {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border);
+}
+
+.corner-logo {
+  position: fixed;
+  bottom: 18px;
+  left: 18px;
+  z-index: 10;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+.corner-logo .logo {
+  color: #fff;
+}
+
 footer {
   border-top: 1px solid var(--border);
   background: var(--card);
