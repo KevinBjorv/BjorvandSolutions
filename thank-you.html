@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | Smart Indie</title>
+  <link rel="stylesheet" href="assets/css/thank-you.css" />
+</head>
+<body>
+  <main class="thank-you">
+    <section class="card">
+      <h1>Thank you for signing up!</h1>
+      <p>We're excited to have you on board. Your journey with Smart Indie starts now.</p>
+      <p class="timer">Redirecting to our About page in <span id="countdown">10</span> seconds…</p>
+      <a class="link" href="about-contact.html">Go to the About page now</a>
+    </section>
+  </main>
+  <script>
+    const countdownEl = document.getElementById('countdown');
+    let seconds = 10;
+
+    const interval = setInterval(() => {
+      seconds -= 1;
+      countdownEl.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(interval);
+        window.location.href = 'about-contact.html';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
