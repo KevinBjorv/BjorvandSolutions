@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Work Timer</title>
+  <meta name="description" content="Minimalistic deep work timer with focus session lengths, playback controls, and completion chime.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 18px 80px;
+    }
+
+    .timer-shell {
+      max-width: 540px;
+      width: 100%;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .timer-shell h1 {
+      margin-bottom: 10px;
+    }
+
+    .timer-shell p {
+      margin-bottom: 24px;
+    }
+
+    .timer-display {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin: 16px 0 24px;
+    }
+
+    .timer-controls,
+    .timer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .timer-actions {
+      margin-top: 20px;
+    }
+
+    .timer-footer {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .timer-footer .button {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timer-shell .button {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), color var(--transition);
+    }
+
+    .timer-shell .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .timer-shell .button.primary {
+      background: var(--accent);
+      color: #0e1116;
+      border-color: transparent;
+    }
+
+    .timer-shell .button.ghost {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: transparent;
+    }
+
+    .timer-shell .button[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .timer-status {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    body.timer-fullscreen header,
+    body.timer-fullscreen footer {
+      display: none;
+    }
+
+    body.timer-fullscreen main {
+      padding: 24px 18px 32px;
+    }
+
+    .timer-shell:fullscreen,
+    body.timer-fullscreen .timer-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+  <!-- MailerLite Universal -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2012841');
+  </script>
+  <!-- End MailerLite Universal -->
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a class="logo" href="/">
+        <img src="/assets/images/logos/SmartIndieLogo.png" alt="Smart Indie logo">
+        <span>Smart Indie</span>
+      </a>
+      <nav aria-label="Smart Indie Apps">
+        <div class="nav-links">
+          <a href="/app/asset-websites/">Asset Websites</a>
+          <a href="/app/deep-work-timer/">Deep Work Timer</a>
+          <a href="/app/game-idea-generator/">Game Idea Generator</a>
+          <a href="/app/forum-search/">Forum Search</a>
+        </div>
+      </nav>
+      <div class="nav-actions">
+        <a class="button ghost" href="/app/index/">Apps Hub</a>
+        <a class="button primary" href="https://www.skool.com/smart-indie-6927" target="_blank" rel="noopener noreferrer">Skool</a>
+        <button class="burger" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/app/asset-websites/">Asset Websites</a>
+      <a href="/app/deep-work-timer/">Deep Work Timer</a>
+      <a href="/app/game-idea-generator/">Game Idea Generator</a>
+      <a href="/app/forum-search/">Forum Search</a>
+      <a href="/app/index/">Apps Hub</a>
+      <a href="https://www.skool.com/smart-indie-6927" target="_blank" rel="noopener noreferrer">Skool</a>
+    </div>
+  </header>
+  <main>
+    <section class="timer-shell" aria-labelledby="timer-title">
+      <h1 id="timer-title">Deep Work Timer</h1>
+      <p>Choose a session length, press play, and stay in the flow.</p>
+
+      <div class="timer-controls" role="group" aria-label="Session length">
+        <button class="button ghost" data-minutes="15" type="button">15 min</button>
+        <button class="button ghost" data-minutes="45" type="button">45 min</button>
+        <button class="button ghost" data-minutes="60" type="button">60 min</button>
+        <button class="button ghost" data-minutes="90" type="button">90 min</button>
+      </div>
+
+      <div class="timer-display" id="timerDisplay" aria-live="polite">60:00</div>
+
+      <div class="timer-actions" role="group" aria-label="Timer controls">
+        <button class="button primary" id="playPauseButton" type="button">Play</button>
+        <button class="button" id="resetButton" type="button">Reset</button>
+        <button class="button" id="fullScreenButton" type="button">Full screen</button>
+      </div>
+
+      <div class="timer-status" id="timerStatus">Ready to focus.</div>
+      <div class="timer-footer">
+        <a class="button" href="/app/index/">Return to apps</a>
+      </div>
+      <audio id="completionSound" preload="auto" src="/assets/audio/smooth-completed-notify-starting-alert-274739.mp3"></audio>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>© Bjorvand Solutions 2025 • Company registration number: 836 135 652 (Norway)</div>
+      <div class="footer-links">
+        <a href="/app/index/">Apps Hub</a>
+        <a href="/app/asset-websites/">Asset Websites</a>
+        <a href="/app/deep-work-timer/">Deep Work Timer</a>
+        <a href="/app/game-idea-generator/">Game Idea Generator</a>
+        <a href="/app/forum-search/">Forum Search</a>
+        <a href="/">Main site</a>
+      </div>
+      <div>kevin@smartindie.dev</div>
+    </div>
+  </footer>
+
+  <script>
+    const display = document.getElementById('timerDisplay');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const resetButton = document.getElementById('resetButton');
+    const fullScreenButton = document.getElementById('fullScreenButton');
+    const statusText = document.getElementById('timerStatus');
+    const completionSound = document.getElementById('completionSound');
+    const durationButtons = Array.from(document.querySelectorAll('[data-minutes]'));
+    const timerShell = document.querySelector('.timer-shell');
+
+    let selectedMinutes = 60;
+    let remainingSeconds = selectedMinutes * 60;
+    let timerId = null;
+    let isRunning = false;
+
+    const formatTime = (totalSeconds) => {
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    };
+
+    const updateDisplay = () => {
+      display.textContent = formatTime(remainingSeconds);
+      document.title = `${formatTime(remainingSeconds)} • Deep Work Timer`;
+    };
+
+    const updateButtons = () => {
+      durationButtons.forEach((button) => {
+        const isActive = Number(button.dataset.minutes) === selectedMinutes;
+        button.classList.toggle('primary', isActive);
+        button.classList.toggle('ghost', !isActive);
+      });
+    };
+
+    const stopTimer = () => {
+      clearInterval(timerId);
+      timerId = null;
+      isRunning = false;
+      playPauseButton.textContent = 'Play';
+    };
+
+    const tick = () => {
+      if (remainingSeconds > 0) {
+        remainingSeconds -= 1;
+        updateDisplay();
+      }
+
+      if (remainingSeconds <= 0) {
+        remainingSeconds = 0;
+        updateDisplay();
+        statusText.textContent = 'Session complete. Great work!';
+        stopTimer();
+        completionSound.currentTime = 0;
+        completionSound.play();
+      }
+    };
+
+    const startTimer = () => {
+      if (isRunning) {
+        return;
+      }
+      isRunning = true;
+      playPauseButton.textContent = 'Pause';
+      statusText.textContent = 'Deep work session running.';
+      timerId = setInterval(tick, 1000);
+    };
+
+    durationButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        selectedMinutes = Number(button.dataset.minutes);
+        remainingSeconds = selectedMinutes * 60;
+        updateButtons();
+        updateDisplay();
+        statusText.textContent = 'Ready to focus.';
+        stopTimer();
+      });
+    });
+
+    playPauseButton.addEventListener('click', () => {
+      if (isRunning) {
+        stopTimer();
+        statusText.textContent = 'Paused.';
+        return;
+      }
+
+      if (remainingSeconds === 0) {
+        remainingSeconds = selectedMinutes * 60;
+        updateDisplay();
+      }
+      startTimer();
+    });
+
+    resetButton.addEventListener('click', () => {
+      stopTimer();
+      remainingSeconds = selectedMinutes * 60;
+      updateDisplay();
+      statusText.textContent = 'Ready to focus.';
+    });
+
+    const updateFullScreenButton = () => {
+      const isFullScreen = Boolean(document.fullscreenElement);
+      fullScreenButton.textContent = isFullScreen ? 'Exit full screen' : 'Full screen';
+      document.body.classList.toggle('timer-fullscreen', isFullScreen);
+    };
+
+    fullScreenButton.addEventListener('click', async () => {
+      if (!document.fullscreenElement) {
+        try {
+          await timerShell.requestFullscreen();
+        } catch (error) {
+          console.error('Unable to enter full screen.', error);
+        }
+        return;
+      }
+
+      await document.exitFullscreen();
+    });
+
+    document.addEventListener('fullscreenchange', updateFullScreenButton);
+
+    updateButtons();
+    updateDisplay();
+    updateFullScreenButton();
+  </script>
+</body>
+</html>
