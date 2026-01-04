@@ -113,12 +113,12 @@ const renderCards = (sites, categoryData) => {
       image.classList.add('has-banner');
       image.style.setProperty(
         '--banner-image',
-        `url('../assets/assetWebsites/${bannerFile}')`
+        `url('/assets/assetWebsites/${bannerFile}')`
       );
 
       const bannerImg = document.createElement('img');
       bannerImg.className = 'asset-banner-image';
-      bannerImg.src = `../assets/assetWebsites/${bannerFile}`;
+      bannerImg.src = `/assets/assetWebsites/${bannerFile}`;
       bannerImg.alt = `${site.name} banner`;
       image.appendChild(bannerImg);
 
@@ -241,7 +241,7 @@ const init = async () => {
   if (!filtersContainer || !grid || !count) return;
 
   try {
-    const response = await fetch('../assets/data/AssetWebsitesList.json');
+    const response = await fetch('/assets/data/AssetWebsitesList.json');
     const data = await response.json();
 
     const categoryData = buildCategoryData(data.rankings_by_category);
