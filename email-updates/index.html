@@ -11,19 +11,24 @@
   <link rel="icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <!-- MailerLite Universal -->
-  <script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2012841');
-  </script>
-  <!-- End MailerLite Universal -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" defer></script>
 </head>
 <body class="email-page">
   <main class="email-fullscreen">
-    <div class="ml-embedded" data-form="7cnzir"></div>
+    <section class="subscribe-card" aria-labelledby="subscribe-title">
+      <div>
+        <p class="pill">Free template • Delivered instantly</p>
+        <h1 id="subscribe-title">Get the Smart Indie productivity template</h1>
+        <p>Enter your email to receive the Trello template and join the Smart Indie list for practical tips on finishing your first game.</p>
+      </div>
+      <form id="subscribeForm" class="subscribe-form" novalidate>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        <div id="turnstile-container" class="cf-turnstile" data-sitekey="0x4AAAAAACKzhfSM5J4krA5T" data-size="invisible"></div>
+        <button type="submit" id="submitButton" class="button primary">Get the template</button>
+        <p id="formFeedback" class="form-feedback" role="status" aria-live="polite"></p>
+      </form>
+    </section>
   </main>
 
   <footer>
@@ -39,5 +44,90 @@
       <div>kevin@smartindie.dev</div>
     </div>
   </footer>
+
+  <script src="/assets/js/global.js"></script>
+  <script>
+    let turnstileWidgetId = null;
+    const form = document.getElementById('subscribeForm');
+    const emailInput = document.getElementById('email');
+    const feedbackEl = document.getElementById('formFeedback');
+    const submitButton = document.getElementById('submitButton');
+
+    function setFeedback(message, isError = false) {
+      feedbackEl.textContent = message;
+      feedbackEl.classList.toggle('error', isError);
+      feedbackEl.classList.toggle('success', !isError);
+    }
+
+    function setSubmitting(isSubmitting) {
+      submitButton.disabled = isSubmitting;
+      submitButton.textContent = isSubmitting ? 'Submitting…' : 'Get the template';
+    }
+
+    async function submitWithToken(token) {
+      const email = emailInput.value.trim();
+      if (!email) {
+        setFeedback('Please enter your email address.', true);
+        setSubmitting(false);
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, token })
+        });
+
+        if (response.ok) {
+          setFeedback('Success! Check your inbox for the template.', false);
+          form.reset();
+        } else if (response.status === 400) {
+          setFeedback('Bot check failed. Please try again.', true);
+        } else if (response.status === 429) {
+          setFeedback('Too many attempts. Please wait and try again.', true);
+        } else {
+          setFeedback('Something went wrong. Please try again later.', true);
+        }
+      } catch (error) {
+        setFeedback('Network error. Please try again.', true);
+      } finally {
+        setSubmitting(false);
+        if (turnstileWidgetId && typeof turnstile.reset === 'function') {
+          turnstile.reset(turnstileWidgetId);
+        }
+      }
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      setSubmitting(true);
+      setFeedback('');
+
+      if (!turnstileWidgetId) {
+        setFeedback('Security check not ready. Please try again.', true);
+        setSubmitting(false);
+        return;
+      }
+
+      if (typeof turnstile !== 'undefined' && typeof turnstile.execute === 'function') {
+        turnstile.execute(turnstileWidgetId, {
+          action: 'subscribe'
+        });
+      }
+    });
+
+    function onTurnstileLoad() {
+      turnstileWidgetId = turnstile.render('#turnstile-container', {
+        sitekey: '0x4AAAAAACKzhfSM5J4krA5T',
+        size: 'invisible',
+        callback: (token) => submitWithToken(token),
+        'error-callback': () => {
+          setFeedback('Security check failed. Please refresh and try again.', true);
+          setSubmitting(false);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
