@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Indie | Unity Version Control for Beginners: The Simple Git Setup That Saves Your Game</title>
+  <meta name="description" content="A beginner-friendly Unity Git setup that protects your game with simple version control steps.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/articles.css">
+  <!-- MailerLite Universal -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2012841');
+  </script>
+  <!-- End MailerLite Universal -->
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a class="logo" href="/">
+        <img src="/assets/images/logos/SmartIndieLogo.png" alt="Smart Indie logo">
+        <span>Smart Indie</span>
+      </a>
+      <nav aria-label="Primary">
+        <div class="nav-links">
+          <a href="/games/">Games</a>
+          <a href="/articles/">Articles</a>
+          <a href="/faq/">FAQ</a>
+          <a href="/about-contact/">About &amp; Contact</a>
+        </div>
+      </nav>
+      <div class="nav-actions">
+        <a class="button primary nav-cta" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Join now</a>
+        <a class="button ghost" href="https://smartindie.dev/app/index/">Apps hub</a>
+        <button class="burger" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/games/">Games</a>
+      <a href="/articles/">Articles</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/about-contact/">About &amp; Contact</a>
+      <a href="https://smartindie.dev/app/index/">Apps hub</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="article-section" aria-labelledby="unity-version-control-title" data-reveal>
+      <article class="article-entry">
+        <p class="article-tag">Unity basics</p>
+        <h1 id="unity-version-control-title">Unity Version Control for Beginners: The Simple Git Setup That Saves Your Game</h1>
+        <p>Most beginners learn version control after they get burned.</p>
+        <p>I learned it the fun way: by losing progress, breaking something that used to work, and realizing I had no clean way back.</p>
+        <p>Version control sounds like “team stuff.” It isn’t. It’s a solo dev survival tool.</p>
+        <hr>
+        <h2>What version control actually does (in human language)</h2>
+        <ul>
+          <li>I can rewind my project to yesterday.</li>
+          <li>I can try risky changes without fear.</li>
+          <li>I can stop making “FINAL_FINAL_v7” folders.</li>
+        </ul>
+        <p>If you’re building games in Unity, you need this. Even if you’re alone. Especially if you’re alone.</p>
+        <hr>
+        <h2>The beginner fear: “Git is too complicated”</h2>
+        <p>Git can get complicated. But your setup does not need to be.</p>
+        <p>You only need to learn <strong>three actions</strong> at the start:</p>
+        <h3>1) Commit</h3>
+        <p>A “save point” with a message.</p>
+        <h3>2) Push</h3>
+        <p>Backup to GitHub (or another remote).</p>
+        <h3>3) Pull</h3>
+        <p>Download the latest version to your PC.</p>
+        <p>That’s enough to protect your project while you learn the rest gradually.</p>
+        <hr>
+        <h2>My minimal Unity + Git setup (the exact steps I recommend)</h2>
+        <h3>Step 1: Create a new repo (GitHub or local)</h3>
+        <ul>
+          <li>Make a repository for your Unity project.</li>
+          <li>Put it in the same folder as your project (or initialize inside the project folder).</li>
+        </ul>
+        <h3>Step 2: Add a proper Unity <code>.gitignore</code></h3>
+        <p>Unity generates tons of files you do not want to track.</p>
+        <p>If you commit everything, Git becomes slow, messy, and annoying. A Unity-specific <code>.gitignore</code> fixes that.</p>
+        <h3>Step 3: Use Git LFS for large files (important)</h3>
+        <p>Unity projects include large binary files (textures, audio, models). Git struggles with that.</p>
+        <p>Git LFS (Large File Storage) handles big files cleanly so your repo doesn’t explode.</p>
+        <h3>Step 4: Make “small commits” with boring messages</h3>
+        <p>I know people want cool commit messages. Don’t.</p>
+        <p>Use simple ones:</p>
+        <ul>
+          <li><code>Player movement working</code></li>
+          <li><code>Fix enemy pathing bug</code></li>
+          <li><code>Add main menu UI</code></li>
+        </ul>
+        <p>Small commits are easy to undo. Big commits are fear.</p>
+        <hr>
+        <h2>The “I’m a beginner” workflow that actually works</h2>
+        <h3>Daily workflow (solo dev)</h3>
+        <h4>Morning</h4>
+        <ul>
+          <li>Pull (if you work on multiple PCs)</li>
+          <li>Make changes</li>
+          <li>Commit when something works</li>
+          <li>Push</li>
+        </ul>
+        <h4>End of session</h4>
+        <ul>
+          <li>Commit + push again</li>
+        </ul>
+        <p>If you do this, you basically stop fearing Unity experiments. You get your confidence back.</p>
+        <hr>
+        <h2>Common Unity version control mistakes (that waste weeks)</h2>
+        <h3>Mistake 1: Waiting until the game is “serious”</h3>
+        <p>If you wait, you’ll eventually hit a project-breaking moment… and you’ll wish you started earlier.</p>
+        <h3>Mistake 2: Committing random generated folders</h3>
+        <p>This makes your repo huge and causes weird merge issues.</p>
+        <h3>Mistake 3: No LFS, then your repo becomes pain</h3>
+        <p>You’ll feel it when pushes get slow and cloning takes forever.</p>
+        <div class="article-cta">
+          <div>
+            <h3>Smart Indie</h3>
+            <p>Inside SmartIndie, I treat version control as part of the “finish and release” skill, not a side quest. I want beginners to ship games without the constant fear of breaking everything. Version control is one of the simplest ways to make that real.</p>
+          </div>
+          <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Join Smart Indie</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+      <div class="footer-content">
+        <div>© Bjorvand Solutions 2025 • Company registration number: 836 135 652 (Norway)</div>
+      <div class="footer-links">
+        <a href="/">Smart Indie</a>
+        <a href="/games/">Games</a>
+        <a href="/articles/">Articles</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/email-updates/">Email Updates</a>
+        <a href="/about-contact/">About &amp; Contact</a>
+      </div>
+      <div>kevin@smartindie.dev</div>
+    </div>
+  </footer>
+  <script src="/assets/js/global.js"></script>
+</body>
+</html>
