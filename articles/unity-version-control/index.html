@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Indie | Unity Version Control for Beginners: The Simple Git Setup That Saves Your Game</title>
-  <meta name="description" content="A beginner-friendly Unity Git setup that protects your game with simple version control steps.">
+  <title>Smart Indie | Unity Version Control for Beginners: The Simple Setup That Saves Your Project</title>
+  <meta name="description" content="A simple Unity version control setup for beginners that saves your project and keeps work safe.">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
@@ -56,78 +56,86 @@
     <section class="article-section" aria-labelledby="unity-version-control-title" data-reveal>
       <article class="article-entry">
         <p class="article-tag">Unity basics</p>
-        <h1 id="unity-version-control-title">Unity Version Control for Beginners: The Simple Git Setup That Saves Your Game</h1>
-        <p>Most beginners learn version control after they get burned.</p>
-        <p>I learned it the fun way: by losing progress, breaking something that used to work, and realizing I had no clean way back.</p>
-        <p>Version control sounds like “team stuff.” It isn’t. It’s a solo dev survival tool.</p>
+        <h1 id="unity-version-control-title">Unity Version Control for Beginners: The Simple Setup That Saves Your Project</h1>
+        <p>Most beginners learn version control after they get burned. I did too. Something breaks, you don’t remember what you changed, and suddenly you’re digging through old folders like <code>Game_Final_FINAL_7</code>. Version control fixes that. It’s not a “team-only” thing. For a solo developer, it’s basically a time machine and a backup system in one.</p>
+        <p>The goal is not to become a Git expert. The goal is to stop losing work, stop being scared of making changes, and make it easy to go back to a working version when you mess something up (because you will, and that’s normal).</p>
         <hr>
-        <h2>What version control actually does (in human language)</h2>
-        <ul>
-          <li>I can rewind my project to yesterday.</li>
-          <li>I can try risky changes without fear.</li>
-          <li>I can stop making “FINAL_FINAL_v7” folders.</li>
-        </ul>
-        <p>If you’re building games in Unity, you need this. Even if you’re alone. Especially if you’re alone.</p>
+        <h2>What version control actually does (in plain language)</h2>
+        <p>Version control gives you “save points” you can return to. Each save point includes exactly what changed and when. So instead of guessing which file broke your game, you can compare changes, undo specific commits, or just rewind to the last stable version.</p>
+        <p>For me, the biggest benefit was confidence. When I knew I could roll back, I started experimenting more. That’s when you learn faster.</p>
         <hr>
-        <h2>The beginner fear: “Git is too complicated”</h2>
-        <p>Git can get complicated. But your setup does not need to be.</p>
-        <p>You only need to learn <strong>three actions</strong> at the start:</p>
-        <h3>1) Commit</h3>
-        <p>A “save point” with a message.</p>
-        <h3>2) Push</h3>
-        <p>Backup to GitHub (or another remote).</p>
-        <h3>3) Pull</h3>
-        <p>Download the latest version to your PC.</p>
-        <p>That’s enough to protect your project while you learn the rest gradually.</p>
+        <h2>The only Git actions you need at the start</h2>
+        <p>If you’re a beginner, you only need three concepts:</p>
+        <ul>
+          <li><strong>Commit</strong>: create a save point with a short message</li>
+          <li><strong>Push</strong>: upload your save points to GitHub (backup)</li>
+          <li><strong>Pull</strong>: download the latest save points to your PC</li>
+        </ul>
+        <p>That’s it. Everything else can come later.</p>
         <hr>
-        <h2>My minimal Unity + Git setup (the exact steps I recommend)</h2>
-        <h3>Step 1: Create a new repo (GitHub or local)</h3>
+        <h2>The beginner setup I recommend (simple and safe)</h2>
+        <h3>1) Use GitHub Desktop (or another GUI) instead of the terminal</h3>
+        <p>You <em>can</em> use the terminal, but beginners often get stuck on Git commands instead of game dev. GitHub Desktop makes the basics easy: you can see changed files, write a commit message, and push with a button. If you want to learn terminal later, great, but don’t block yourself now.</p>
+        <h3>2) Create a repo for each game project</h3>
+        <p>Keep it clean: one repository per Unity project. It makes everything simpler and reduces the chance you accidentally track weird files.</p>
+        <h3>3) Add a Unity <code>.gitignore</code> immediately</h3>
+        <p>This is the most important part. Unity generates a lot of files that you should not commit. If you commit them, your repo becomes huge and messy, and you’ll run into pointless issues later.</p>
+        <p>A proper Unity <code>.gitignore</code> will ignore things like:</p>
         <ul>
-          <li>Make a repository for your Unity project.</li>
-          <li>Put it in the same folder as your project (or initialize inside the project folder).</li>
+          <li><code>Library/</code></li>
+          <li><code>Temp/</code></li>
+          <li><code>Obj/</code></li>
+          <li><code>Build/</code> (usually)</li>
+          <li>Logs and caches</li>
         </ul>
-        <h3>Step 2: Add a proper Unity <code>.gitignore</code></h3>
-        <p>Unity generates tons of files you do not want to track.</p>
-        <p>If you commit everything, Git becomes slow, messy, and annoying. A Unity-specific <code>.gitignore</code> fixes that.</p>
-        <h3>Step 3: Use Git LFS for large files (important)</h3>
-        <p>Unity projects include large binary files (textures, audio, models). Git struggles with that.</p>
-        <p>Git LFS (Large File Storage) handles big files cleanly so your repo doesn’t explode.</p>
-        <h3>Step 4: Make “small commits” with boring messages</h3>
-        <p>I know people want cool commit messages. Don’t.</p>
-        <p>Use simple ones:</p>
+        <p>Those folders are generated by Unity and can be rebuilt on any machine. You don’t need them in Git. You want to commit the actual project assets and code, not the engine’s temporary output.</p>
+        <h3>4) Also ignore big generated files you don’t need</h3>
+        <p>Even with a Unity <code>.gitignore</code>, there are a few common “repo bloat” problems beginners hit.</p>
+        <p>If you generate big files that can be recreated, ignore them. Two common examples:</p>
         <ul>
-          <li><code>Player movement working</code></li>
-          <li><code>Fix enemy pathing bug</code></li>
-          <li><code>Add main menu UI</code></li>
+          <li><strong>Lightmaps</strong> (if you bake lighting and it produces huge textures)</li>
+          <li><strong>Recorded gameplay footage</strong> or random exports you drop into the project folder</li>
         </ul>
-        <p>Small commits are easy to undo. Big commits are fear.</p>
+        <p>The rule is simple: if it’s a large generated output and you can recreate it, don’t commit it. Keep your repo lean.</p>
         <hr>
-        <h2>The “I’m a beginner” workflow that actually works</h2>
-        <h3>Daily workflow (solo dev)</h3>
-        <h4>Morning</h4>
+        <h2>What you should commit (so your project actually works on another PC)</h2>
+        <p>When your <code>.gitignore</code> is correct, you generally <em>do</em> commit things like:</p>
         <ul>
-          <li>Pull (if you work on multiple PCs)</li>
-          <li>Make changes</li>
-          <li>Commit when something works</li>
-          <li>Push</li>
+          <li><code>Assets/</code> (scripts, prefabs, scenes, art you actually use)</li>
+          <li><code>Packages/</code> (package dependencies)</li>
+          <li><code>ProjectSettings/</code> (Unity project settings)</li>
         </ul>
-        <h4>End of session</h4>
-        <ul>
-          <li>Commit + push again</li>
-        </ul>
-        <p>If you do this, you basically stop fearing Unity experiments. You get your confidence back.</p>
+        <p>If you commit those and ignore the generated folders, you can clone the repo on another PC, open the project, and Unity will rebuild everything it needs.</p>
         <hr>
-        <h2>Common Unity version control mistakes (that waste weeks)</h2>
-        <h3>Mistake 1: Waiting until the game is “serious”</h3>
-        <p>If you wait, you’ll eventually hit a project-breaking moment… and you’ll wish you started earlier.</p>
-        <h3>Mistake 2: Committing random generated folders</h3>
-        <p>This makes your repo huge and causes weird merge issues.</p>
-        <h3>Mistake 3: No LFS, then your repo becomes pain</h3>
-        <p>You’ll feel it when pushes get slow and cloning takes forever.</p>
+        <h2>A workflow that actually fits beginner Unity projects</h2>
+        <p>Here’s the workflow I recommend because it’s simple and it prevents disasters.</p>
+        <h3>Commit when something works</h3>
+        <p>Not at the end of the day. Not after you finish a “big feature.” Commit when you reach a stable point, even if it’s small.</p>
+        <p>Examples of good commit moments:</p>
+        <ul>
+          <li>player movement works</li>
+          <li>you fixed a bug</li>
+          <li>the UI actually updates correctly</li>
+          <li>you added one enemy type and it behaves</li>
+        </ul>
+        <p>Small commits are easier to undo and easier to understand.</p>
+        <h3>Push at least once per session</h3>
+        <p>If GitHub is your backup, then pushing is what makes the backup real. If you commit but never push, you still only have one copy on your PC.</p>
+        <hr>
+        <h2>Common mistakes that waste a lot of time</h2>
+        <h3>Tracking the wrong folders</h3>
+        <p>If you accidentally commit <code>Library/</code> or other generated folders, your repo becomes slow and bloated. It also makes pulling changes more annoying.</p>
+        <h3>Treating Git like a “later problem”</h3>
+        <p>If you wait until the project is big, you’ll avoid using Git because setting it up will feel scary. Start early when the project is small.</p>
+        <h3>Making huge commits</h3>
+        <p>If one commit contains 200 changed files and “a bunch of stuff,” it becomes almost useless as a save point. Keep commits small and specific.</p>
+        <hr>
+        <h2>The real reason I push version control so hard</h2>
+        <p>Beginners quit projects because they hit chaos: bugs, broken scenes, messy folders, lost work, no clear way back. Version control doesn’t make you better at Unity, but it makes Unity less punishing. That means you stick around long enough to actually get good.</p>
         <div class="article-cta">
           <div>
-            <h3>Smart Indie</h3>
-            <p>Inside SmartIndie, I treat version control as part of the “finish and release” skill, not a side quest. I want beginners to ship games without the constant fear of breaking everything. Version control is one of the simplest ways to make that real.</p>
+            <h3>SmartIndie</h3>
+            <p>In SmartIndie, I treat version control as a “finish your game” skill, not a nerdy extra. If you want a simple system for building, staying organized, and actually shipping small games without your project turning into chaos, place your “Join SmartIndie” button right here at the end of the article.</p>
           </div>
           <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Join Smart Indie</a>
         </div>
