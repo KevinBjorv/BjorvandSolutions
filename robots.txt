@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://smartindie.dev/sitemap.xml
